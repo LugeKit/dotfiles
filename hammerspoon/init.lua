@@ -85,7 +85,7 @@ hs.hotkey.bind({"ctrl", "shift"}, "\\", hs.fnutils.partial(moveWindow, "max"))
 
 -- auto change input method
 local appLanguage = {
-  {"/Applications/Alfred.app", "ABC"},
+  {"/Applications/Raycast.app", "ABC"},
   {"/Applications/iTerm.app", "ABC"},
   {"/Applications/Android Studio.app", "ABC"},
   {"/Applications/Visual Studio Code.app", "ABC"},
