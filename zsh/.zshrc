@@ -21,8 +21,13 @@ git config --global alias.cm 'commit -m'
 git config --global alias.st status
 git config --global push.autoSetupRemote true
 
-function gpw {
+gpw() {
     git aa
     git commit --amend --no-edit
     git push -f
+}
+
+grs() {
+    git aa
+    git reset --hard head
 }
