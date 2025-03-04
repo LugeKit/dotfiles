@@ -14,7 +14,7 @@ precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
 zstyle ':vcs_info:git*' formats '(%b)'
-PROMPT='%F{red}%n%f %F{blue}%~%f%F{green}${vcs_info_msg_0_}%f> '
+PROMPT='%F{red}%n%f %F{blue}%~%f%F{green}${vcs_info_msg_0_}%f > '
 
 # shortcuts
 alias ll='ls -l'
