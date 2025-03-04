@@ -12,6 +12,7 @@ source ~/dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # shortcuts
 alias ll='ls -l'
 alias la='ls -la'
+alias py3=python3
 
 # git configuration
 git config --global alias.co checkout
