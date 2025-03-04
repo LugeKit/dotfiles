@@ -90,6 +90,9 @@ local appLanguage = {
   {"/Applications/Android Studio.app", "ABC"},
   {"/Applications/Visual Studio Code.app", "ABC"},
   {"/Applications/Google Chrome.app", "ABC"},
+  {"/Applications/GoLand.app", "ABC"},
+  {"/Applications/PyCharm Community.app", "ABC"},
+  {"/Applications/RustRover.app", "ABC"},
   {"/Applications/Lark.app", "Pinyin - Simplified"},
   {"/Applications/WeChat.app", "Pinyin - Simplified"}
 }
