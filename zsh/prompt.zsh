@@ -3,6 +3,7 @@ source ~/dotfiles/zsh/git-prompt/examples/ascii.zsh
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 ZSH_THEME_GIT_PROMPT_PREFIX=""
 ZSH_THEME_GIT_PROMPT_SEPARATOR=""
+ZSH_THEME_GIT_PROMPT_UNTRACKED="u"
 gitprompt_modify() {
     local prompt=$(gitprompt)
     if [[ $prompt == "" ]]; then
