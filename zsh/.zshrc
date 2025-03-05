@@ -1,12 +1,12 @@
-source ~/dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/dotfiles/zsh/prompt.zsh
-
-source ~/dotfiles/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd completion history)
-HISTFILE=~/.zsh_histfile
+HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
-setopt appendhistory
+setopt SHAREHISTORY
+source ~/dotfiles/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd completion history)
+
+source ~/dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/dotfiles/zsh/prompt.zsh
 
 # use CTRL-D to enter normal mode, because there will be a lag when using escape
 # should be placed before plugin is loaded
