@@ -11,3 +11,4 @@ ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd completion history)
 autoload -U compinit; compinit
 zstyle ':completion:*' menu select
 zstyle ':completion:*' squeeze-slashes true
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Za-z}'
