@@ -1,8 +1,6 @@
 source ~/dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/dotfiles/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/dotfiles/zsh/git-prompt/git-prompt.zsh
-
-PROMPT='%F{red}%n%f %F{blue}%~%f${${$(gitprompt):+$(gitprompt)> }:- > }'
+source ~/dotfiles/zsh/prompt.zsh
 
 # use CTRL-D to enter normal mode, because there will be a lag when using escape
 # should be placed before plugin is loaded
