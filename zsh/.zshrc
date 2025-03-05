@@ -1,3 +1,8 @@
+# simple source
+source ~/dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/dotfiles/zsh/prompt.zsh
+
+# history between sessions for auto suggestions
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
@@ -5,11 +10,14 @@ setopt SHAREHISTORY
 source ~/dotfiles/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd completion history)
 
-source ~/dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/dotfiles/zsh/prompt.zsh
+# completions settings
+# link: https://thevaluable.dev/zsh-completion-guide-examples/
+autoload -U compinit; compinit
+zstyle ':completion:*' menu select
+zstyle ':completion:*' squeeze-slashes true
 
 # use CTRL-D to enter normal mode, because there will be a lag when using escape
-# should be placed before plugin is loaded
+# should be placed BEFORE zsh-syntax-highlighting/zsh-autosuggestions is loaded
 VIM_MODE_VICMD_KEY='^D'
 # vim input in zsh, should behind zsh-syntax-highlighting
 source ~/dotfiles/zsh/zsh-vim-mode/zsh-vim-mode.plugin.zsh
