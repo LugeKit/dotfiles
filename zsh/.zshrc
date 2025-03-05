@@ -8,6 +8,9 @@ VIM_MODE_VICMD_KEY='^D'
 # vim input in zsh, should behind zsh-syntax-highlighting
 source ~/dotfiles/zsh/zsh-vim-mode/zsh-vim-mode.plugin.zsh
 
+source ~/dotfiles/zsh/zsh-autopair/autopair.zsh
+autopair-init
+
 # setup prompt
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
