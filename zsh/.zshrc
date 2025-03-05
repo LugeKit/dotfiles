@@ -1,5 +1,5 @@
-# command highlight
 source ~/dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/dotfiles/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # use CTRL-D to enter normal mode, because there will be a lag when using escape
 # should be placed before plugin is loaded
