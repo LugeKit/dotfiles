@@ -1,5 +1,8 @@
 source ~/dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/dotfiles/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/dotfiles/zsh/git-prompt/git-prompt.zsh
+
+PROMPT='%F{red}%n%f %F{blue}%~%f${${$(gitprompt):+$(gitprompt)> }:- > }'
 
 # use CTRL-D to enter normal mode, because there will be a lag when using escape
 # should be placed before plugin is loaded
@@ -10,14 +13,6 @@ source ~/dotfiles/zsh/zsh-vim-mode/zsh-vim-mode.plugin.zsh
 
 source ~/dotfiles/zsh/zsh-autopair/autopair.zsh
 autopair-init
-
-# setup prompt
-autoload -Uz vcs_info
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
-setopt prompt_subst
-zstyle ':vcs_info:git*' formats '(%b)'
-PROMPT='%F{red}%n%f %F{blue}%~%f%F{green}${vcs_info_msg_0_}%f > '
 
 # shortcuts
 alias ll='ls -l'

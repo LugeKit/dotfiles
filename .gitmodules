@@ -10,3 +10,6 @@
 [submodule "zsh/zsh-autopair"]
 	path = zsh/zsh-autopair
 	url = https://github.com/hlissner/zsh-autopair.git
+[submodule "zsh/git-prompt"]
+	path = zsh/git-prompt
+	url = https://github.com/woefe/git-prompt.zsh.git
