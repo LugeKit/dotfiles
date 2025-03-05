@@ -120,6 +120,7 @@ onoremap in[ :<C-U>normal! f[vi[<CR>
 onoremap in" :<C-U>normal! f"vi"<CR>
 onoremap in' :<C-U>normal! f'vi'<CR>
 onoremap in{ :<C-U>normal! f{vi{<CR>
+" }}}
 
 " Vimscript file settings {{{
 augroup filetype_vim
