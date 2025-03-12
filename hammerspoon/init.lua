@@ -93,6 +93,7 @@ local appLanguage = {
   {"/Applications/GoLand.app", "ABC"},
   {"/Applications/PyCharm Community.app", "ABC"},
   {"/Applications/RustRover.app", "ABC"},
+  {"/Applications/Tabby.app", "ABC"},
   {"/Applications/Lark.app", "Pinyin - Simplified"},
   {"/Applications/WeChat.app", "Pinyin - Simplified"}
 }
