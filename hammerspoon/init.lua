@@ -85,17 +85,17 @@ hs.hotkey.bind({"ctrl", "shift"}, "\\", hs.fnutils.partial(moveWindow, "max"))
 
 -- auto change input method
 local appLanguage = {
-  {"/Applications/Raycast.app", "ABC"},
-  {"/Applications/iTerm.app", "ABC"},
-  {"/Applications/Android Studio.app", "ABC"},
-  {"/Applications/Visual Studio Code.app", "ABC"},
-  {"/Applications/Google Chrome.app", "ABC"},
-  {"/Applications/GoLand.app", "ABC"},
-  {"/Applications/PyCharm Community.app", "ABC"},
-  {"/Applications/RustRover.app", "ABC"},
-  {"/Applications/Tabby.app", "ABC"},
-  {"/Applications/Lark.app", "Pinyin - Simplified"},
-  {"/Applications/WeChat.app", "Pinyin - Simplified"}
+  {"/Applications/Raycast.app", "English"},
+  {"/Applications/iTerm.app", "English"},
+  {"/Applications/Android Studio.app", "English"},
+  {"/Applications/Visual Studio Code.app", "English"},
+  {"/Applications/Google Chrome.app", "English"},
+  {"/Applications/GoLand.app", "English"},
+  {"/Applications/PyCharm Community.app", "English"},
+  {"/Applications/RustRover.app", "English"},
+  {"/Applications/Tabby.app", "English"},
+  {"/Applications/Lark.app", "Chinese"},
+  {"/Applications/WeChat.app", "Chinese"}
 }
 
 function changeCurrentInput()
@@ -105,7 +105,7 @@ function changeCurrentInput()
       local expectedLanguage = app[2]
 
       if focusedAppPath == appPath then
-        if expectedLanguage == "ABC" then
+        if expectedLanguage == "English" then
           hs.keycodes.currentSourceID("com.apple.keylayout.ABC")
         else
           hs.keycodes.currentSourceID("com.apple.inputmethod.SCIM.ITABC")
