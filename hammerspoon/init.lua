@@ -85,33 +85,40 @@ hs.hotkey.bind({"ctrl", "shift"}, "\\", hs.fnutils.partial(moveWindow, "max"))
 
 -- auto change input method
 local appLanguage = {
-  {"/Applications/Raycast.app", "English"},
-  {"/Applications/iTerm.app", "English"},
-  {"/Applications/Android Studio.app", "English"},
-  {"/Applications/Visual Studio Code.app", "English"},
-  {"/Applications/Google Chrome.app", "English"},
-  {"/Applications/GoLand.app", "English"},
-  {"/Applications/PyCharm Community.app", "English"},
-  {"/Applications/RustRover.app", "English"},
-  {"/Applications/Tabby.app", "English"},
-  {"/Applications/Lark.app", "Chinese"},
-  {"/Applications/WeChat.app", "Chinese"}
+  ["/Applications/Raycast.app"] = "English",
+  ["/Applications/iTerm.app"] = "English",
+  ["/Applications/Android Studio.app"] = "English",
+  ["/Applications/Visual Studio Code.app"] = "English",
+  ["/Applications/Google Chrome.app"] = "English",
+  ["/Applications/GoLand.app"] = "English",
+  ["/Applications/PyCharm Community.app"] = "English",
+  ["/Applications/RustRover.app"] = "English",
+  ["/Applications/Tabby.app"] = "English",
+  ["/Applications/Lark.app"] = "Chinese",
+  ["/Applications/WeChat.app"] = "Chinese",
+}
+
+local languageIM = {
+    ["English"] = "com.apple.keylayout.ABC",
+    ["Chinese"] = "com.apple.inputmethod.SCIM.ITABC"
 }
 
 function changeCurrentInput()
   local focusedAppPath = hs.window.focusedWindow():application():path()
-  for index, app in pairs(appLanguage) do
-      local appPath = app[1]
-      local expectedLanguage = app[2]
+  local currentSourceID = hs.keycodes.currentSourceID()
 
-      if focusedAppPath == appPath then
-        if expectedLanguage == "English" then
-          hs.keycodes.currentSourceID("com.apple.keylayout.ABC")
-        else
-          hs.keycodes.currentSourceID("com.apple.inputmethod.SCIM.ITABC")
-        end
-      end
+  local language = appLanguage[focusedAppPath]
+  if language == nil then
+      return
+  end
 
+  local sourceID = languageIM[language]
+  if sourceID == nil then
+      return
+  end
+
+  if currentSourceID ~= sourceID then
+      hs.keycodes.currentSourceID(sourceID)
   end
 end
 
@@ -125,6 +132,6 @@ appLanguageWatcher = hs.application.watcher.new(appLanguageWatcherFunc)
 appLanguageWatcher:start()
 -- test
 function test()
-    hs.alert.show(hs.keycodes.currentSourceID())
+    hs.alert.show(hs.window.focusedWindow() .. " " .. hs.keycodes.currentSourceID())
 end
 hs.hotkey.bind({"ctrl", "shift", "alt"}, "t", hs.fnutils.partial(test))
