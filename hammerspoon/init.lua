@@ -7,9 +7,7 @@ function sendNotify(content, title)
     hs.notify.new({title=title, informativeText=content}):send()
 end
 
--- alert
 alert = hs.alert.show
-
 
 -- auto reload when init.lua is changed
 function reloadConfig(files)
@@ -88,15 +86,6 @@ hs.hotkey.bind({"ctrl", "shift"}, "\\", hs.fnutils.partial(moveWindow, "max"))
 
 -- auto change input method
 local appLanguage = {
-    ["Raycast"] = "English",
-    ["iTerm"] = "English",
-    ["Android Studio"] = "English",
-    ["Visual Studio Code"] = "English",
-    ["Google Chrome"] = "English",
-    ["GoLand"] = "English",
-    ["PyCharm Community"] = "English",
-    ["RustRover"] = "English",
-    ["Ghostty"] = "English",
     ["飞书"] = "Chinese",
 }
 
@@ -105,32 +94,43 @@ local languageIM = {
     ["Chinese"] = "com.apple.inputmethod.SCIM.ITABC"
 }
 
-function changeCurrentInput(appName)
+dismissLarkHotkey = hs.hotkey.new({"cmd"}, "w", function()
+    local app = hs.window.focusedWindow():application()
+    app:hide()
+end)
+
+local function changeIM(language)
     local currentSourceID = hs.keycodes.currentSourceID()
-
-    local language = appLanguage[appName]
-    if language == nil then
-        return
+    local expectedSourceID = languageIM[language]
+    if not expectedSourceID then
+        alert(expectedSourceID .. " is not found in IM map")
     end
 
-    local sourceID = languageIM[language]
-    if sourceID == nil then
-        return
-    end
-
-    if currentSourceID ~= sourceID then
-        hs.keycodes.currentSourceID(sourceID)
+    if currentSourceID ~= expectedSourceID then
+        hs.keycodes.currentSourceID(expectedSourceID)
     end
 end
 
-function appLanguageWatcherFunc(appName, eventType, appObject)
+function onAppChange(appName)
+    -- lark will not lose focus when cmd+w close it window
+    -- so force it to hide
+    if appName == "飞书" then
+        dismissLarkHotkey:enable()
+    else
+        dismissLarkHotkey:disable()
+    end
+
+    -- if language is not set spcifically, set it to ABC
+    local language = appLanguage[appName] or "English"
+    changeIM(language)
+end
+
+appWatcher = hs.application.watcher.new(function(appName, eventType, appObject)
     if (eventType == hs.application.watcher.activated) then
-        changeCurrentInput(appName)
+        onAppChange(appName)
     end
-end
-
-appLanguageWatcher = hs.application.watcher.new(appLanguageWatcherFunc)
-appLanguageWatcher:start()
+end)
+appWatcher:start()
 
 -- terminal
 hs.hotkey.bind({"option"}, "z", function()
