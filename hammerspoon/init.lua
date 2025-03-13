@@ -20,7 +20,7 @@ function reloadConfig(files)
     hs.reload()
   end
 end
-configReloadWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig)
+configReloadWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/dotfiles/hammerspoon/", reloadConfig)
 configReloadWatcher:start()
 sendNotify("Config loaded")
 
@@ -130,8 +130,14 @@ end
 
 appLanguageWatcher = hs.application.watcher.new(appLanguageWatcherFunc)
 appLanguageWatcher:start()
--- test
-function test()
-    hs.alert.show(hs.window.focusedWindow() .. " " .. hs.keycodes.currentSourceID())
-end
-hs.hotkey.bind({"ctrl", "shift", "alt"}, "t", hs.fnutils.partial(test))
+
+-- terminal
+hs.hotkey.bind({"option"}, "z", function()
+    local term = hs.application.get("Ghostty")
+    if term and term:isFrontmost() then
+        term:hide()
+        return
+    end
+    hs.application.launchOrFocus("Ghostty.app")
+end)
+
