@@ -8,8 +8,8 @@ source ~/dotfiles/zsh/zsh-autopair/autopair.zsh
 autopair-init
 
 # shortcuts
-alias ll='ls -l'
-alias la='ls -la'
+alias ll='ls -l --color'
+alias la='ls -la --color'
 alias py3=python3
 
 # git configuration
