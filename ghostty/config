@@ -1,2 +1,3 @@
 font-family = JetBrains Mono
 theme = tokyonight-storm
+window-padding-x = 10
