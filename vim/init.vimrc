@@ -82,7 +82,6 @@ nnoremap <leader>s :%s/
 xnoremap <leader>s :s/
 
 nnoremap <F1> :below terminal<CR>
-nnoremap <leader>W :call ToggleWindowMode()<CR>
 " }}}
 
 " Register settings {{{

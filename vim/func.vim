@@ -1,7 +1,3 @@
-function! CharAfterCursor()
-	return strcharpart(getline('.'), strchars(strpart(getline('.'), 0, col('.')-1)) + 1, 1)
-endfunction
-
 " example: nnoremap cin" f"vi"c
 function! OperatorForNextTargetInIDE(actions, targets)
 for action in a:actions
@@ -13,20 +9,17 @@ for action in a:actions
 	endfor
 endfunction
 
-let g:window_mode_is_on = 0
-function! ToggleWindowMode()
-	if g:window_mode_is_on
-		let g:window_mode_is_on = 0
-		nunmap <
-		nunmap >
-		nunmap -
-		nunmap +
-	else
-		let g:window_mode_is_on = 1
-		nnoremap < <C-w><
-		nnoremap > <C-w>>
-		nnoremap - <C-w>-
-		nnoremap + <C-w>+
-	endif
-	echo "window mode is toggled to: " . g:window_mode_is_on
+function CharAtRight()
+    let line = getline('.')
+    let idx = col('.') - 1
+    let char = idx < len(line) ? line[idx] : ''
+    return char
 endfunction
+
+function CharAtLeft()
+    let line = getline('.')
+    let idx = col('.') - 2
+    let char = idx >= 0 && idx < len(line) ? line[idx] : ''
+    return char
+endfunction
+
