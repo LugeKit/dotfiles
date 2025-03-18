@@ -7,6 +7,8 @@ inoremap ) <cmd>call MoveRightOrInsert(")")<CR>
 inoremap ] <cmd>call MoveRightOrInsert("]")<CR>
 inoremap } <cmd>call MoveRightOrInsert("}")<CR>
 inoremap > <cmd>call MoveRightOrInsert(">")<CR>
+inoremap <BS> <cmd>call MDel("<BS>")<CR>
+inoremap <C-w> <cmd>call MDel("<C-w>")<CR>
 
 function CharAtRight()
     let line = getline('.')
@@ -17,8 +19,9 @@ endfunction
 
 function CharAtLeft()
     let line = getline('.')
-    let idx = col('.')
-    return idx > 1 && idx < len(line)-1 ? line[idx] : ''
+    let idx = col('.') - 2
+    let char = idx >= 0 && idx < len(line) ? line[idx] : ''
+    return char
 endfunction
 
 function QuotesHelper(c)
@@ -39,12 +42,16 @@ function MoveRightOrInsert(c)
     call feedkeys(a:c, "nt")
 endfunction
 
-function Backspace()
+function MDel(c)
     let charAtRight = CharAtRight()
     let charAtLeft = CharAtLeft()
-    if charAtRight == charAtLeft
-        call feedkeys("\<BS>\<Delete>", "nt")
-    else
-        call feedkeys("\<BS>", "nt")
+    if (charAtLeft == '(' && charAtRight == ')') ||
+                \ (charAtLeft == "'" && charAtRight == "'") ||
+                \ (charAtLeft == '"' && charAtRight == '"') ||
+                \ (charAtLeft == "[" && charAtRight == "]") ||
+                \ (charAtLeft == "{" && charAtRight == "}") ||
+                \ (charAtLeft == "<" && charAtRight == ">")
+        call feedkeys("\<Delete>", "nt")
     endif
+    call feedkeys(a:c, "nt")
 endfunction
