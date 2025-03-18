@@ -3,10 +3,6 @@ inoremap ( ()<Left>
 inoremap [ []<Left>
 inoremap " <cmd>call QuotesHelper("\"")<CR>
 inoremap ' <cmd>call QuotesHelper("'")<CR>
-inoremap ) <cmd>call MoveRightOrInsert(")")<CR>
-inoremap ] <cmd>call MoveRightOrInsert("]")<CR>
-inoremap } <cmd>call MoveRightOrInsert("}")<CR>
-inoremap > <cmd>call MoveRightOrInsert(">")<CR>
 inoremap <BS> <cmd>call MDel("<BS>")<CR>
 inoremap <C-w> <cmd>call MDel("<C-w>")<CR>
 
@@ -26,19 +22,11 @@ endfunction
 
 function QuotesHelper(c)
     let charAtRight = CharAtRight()
-    if a:c == charAtRight
-        call feedkeys("\<Right>", "nt")
+    if charAtRight == '' || charAtRight == ' '
+        call feedkeys(a:c . a:c . "\<Left>", "nt")
         return
     endif
-    call feedkeys(a:c . a:c . "\<Left>", "nt")
-endfunction
 
-function MoveRightOrInsert(c)
-    let charAtRight = CharAtRight()
-    if a:c == charAtRight
-        call feedkeys("\<Right>", "nt")
-        return
-    endif
     call feedkeys(a:c, "nt")
 endfunction
 

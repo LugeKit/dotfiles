@@ -65,6 +65,7 @@ inoremap <C-l> <Right>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-D> <Esc>
+inoremap <C-x> <Delete>
 cnoremap <C-j> <Left>
 cnoremap <C-k> <Right>
 cnoremap <C-h> <S-Left>
