@@ -3,21 +3,11 @@ source ~/dotfiles/vim/func.vim
 inoremap { {}<Left>
 inoremap ( ()<Left>
 inoremap [ []<Left>
-inoremap " <cmd>call QuotesHelper("\"")<CR>
-inoremap ' <cmd>call QuotesHelper("'")<CR>
+inoremap " <cmd>call feedkeys("\"\"\<Left>", "nt")<CR>
+inoremap ' <cmd>call feedkeys("''\<Left>", "nt")<CR>
 inoremap <BS> <cmd>call MDel("<BS>")<CR>
 inoremap <C-w> <cmd>call MDel("<C-w>")<CR>
 inoremap <CR> <cmd>call EnterHelper()<CR>
-
-function QuotesHelper(c)
-    let charAtRight = CharAtRight()
-    if charAtRight == '' || charAtRight == ' '
-        call feedkeys(a:c . a:c . "\<Left>", "nt")
-        return
-    endif
-
-    call feedkeys(a:c, "nt")
-endfunction
 
 function MDel(c)
     let charAtRight = CharAtRight()
