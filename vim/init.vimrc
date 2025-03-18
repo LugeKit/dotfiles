@@ -31,7 +31,9 @@ let mapleader = " "
 " Ps = 4  -> steady underline.
 " Ps = 5  -> blinking bar (xterm).
 " Ps = 6  -> steady bar (xterm).
-let &t_SI="\e[5 q"
+let &t_SI.="\e[5 q"
+let &t_SR.="\e[4 q"
+let &t_EI.="\e[1 q"
 " }}}
 
 " Windows settings {{{
@@ -43,6 +45,10 @@ endif
 " }}}
 
 source ~/dotfiles/vim/func.vim
+
+if !exists("&ide")
+    source ~/dotfiles/vim/parentheses.vim
+endif
 
 " Key mappings {{{
 " Normal mappings
