@@ -7,6 +7,7 @@ inoremap " <cmd>call QuotesHelper("\"")<CR>
 inoremap ' <cmd>call QuotesHelper("'")<CR>
 inoremap <BS> <cmd>call MDel("<BS>")<CR>
 inoremap <C-w> <cmd>call MDel("<C-w>")<CR>
+inoremap <CR> <cmd>call EnterHelper()<CR>
 
 function QuotesHelper(c)
     let charAtRight = CharAtRight()
@@ -30,4 +31,14 @@ function MDel(c)
         call feedkeys("\<Delete>", "nt")
     endif
     call feedkeys(a:c, "nt")
+endfunction
+
+function EnterHelper()
+    let charAtLeft = CharAtLeft()
+    let charAtRight = CharAtRight()
+    if charAtLeft == '{' && charAtRight == '}'
+        call feedkeys("\<CR>\<ESC>O", "nt")
+        return
+    endif
+    call feedkeys("\<CR>", "nt")
 endfunction

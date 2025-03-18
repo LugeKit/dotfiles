@@ -8,8 +8,15 @@ set ignorecase
 set smartcase
 set clipboard=unnamed
 set updatetime=250
+
+" timeoutlen: delay for vim mappings finished.
+" ttimeoutlen: delay for keycodes from terminal to vim. i.e, some terminal
+" will map <Esc> as shortcut, so when pressing <Esc>, vim will wait
+" ttimeoutlen to get the <Esc>, and it will result a lag from exiting insert
+" mode.
 set timeoutlen=1000
-set ttimeoutlen=100
+set ttimeoutlen=5
+
 set scrolloff=10
 set backspace=indent,eol,start
 set expandtab
