@@ -43,16 +43,10 @@ let &t_SR.="\e[4 q"
 let &t_EI.="\e[1 q"
 " }}}
 
-" Windows settings {{{
-if !empty(glob("C:/Program Files/PowerShell/7/pwsh.exe"))
-	:language en
-	set shell =\"C:/Program\ Files/PowerShell/7/pwsh.exe\"
-    inoremap <C-Backspace> <C-w>
-endif
-" }}}
-
+source ~/dotfiles/vim/windows.vim
 source ~/dotfiles/vim/func.vim
 source ~/dotfiles/vim/parentheses.vim
+
 
 " Key mappings {{{
 " Normal mappings
