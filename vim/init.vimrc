@@ -52,10 +52,7 @@ endif
 " }}}
 
 source ~/dotfiles/vim/func.vim
-
-if !exists("&ide")
-    source ~/dotfiles/vim/parentheses.vim
-endif
+source ~/dotfiles/vim/parentheses.vim
 
 " Key mappings {{{
 " Normal mappings
@@ -73,10 +70,10 @@ inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-D> <Esc>
 inoremap <C-x> <Delete>
-cnoremap <C-j> <Left>
-cnoremap <C-k> <Right>
-cnoremap <C-h> <S-Left>
-cnoremap <C-l> <S-Right>
+cnoremap <C-h> <Left>
+cnoremap <C-l> <Right>
+cnoremap <C-j> <S-Left>
+cnoremap <C-k> <S-Right>
 xnoremap y y`>
 xnoremap ; :
 xnoremap : ;
@@ -85,8 +82,8 @@ xnoremap : ;
 nnoremap <silent> <ESC> :noh<CR>
 
 " Substitute enhancement
-nnoremap <leader>s :%s/
-xnoremap <leader>s :s/
+nnoremap <leader>s :%s/\v
+xnoremap <leader>s :s/\v
 
 nnoremap <F1> :below terminal<CR>
 " }}}
@@ -102,47 +99,6 @@ xnoremap c "_c
 xnoremap C "_C
 xnoremap <leader>d "_d
 xnoremap <leader>D "_D
-" }}}
-
-" Parenthsis settings {{{
-" s to surround things
-" S to unsurround things
-if exists("&ide")
-    xnoremap s( c()<ESC>hp
-    xnoremap s" c""<ESC>hp
-    xnoremap s' c''<ESC>hp
-    xnoremap s[ c[]<ESC>hp
-    xnoremap s< c<><ESC>hp
-    xnoremap s{ c{}<ESC>hp
-else
-    xnoremap s( <ESC>`>a)<ESC>`<i(<ESC>
-    xnoremap s" <ESC>`>a"<ESC>`<i"<ESC>
-    xnoremap s' <ESC>`>a'<ESC>`<i'<ESC>
-    xnoremap s[ <ESC>`>a]<ESC>`<i[<ESC>
-    xnoremap s< <ESC>`>a><ESC>`<i<<ESC>
-    xnoremap s{ <ESC>`>a}<ESC>`<i{<ESC>
-endif
-
-nnoremap s( mpciw()<ESC>P`pl
-nnoremap s" mpciw""<ESC>P`pl
-nnoremap s' mpciw''<ESC>P`pl
-nnoremap s[ mpciw[]<ESC>P`pl
-nnoremap s< mpciw<><ESC>P`pl
-nnoremap s{ mpciw{}<ESC>P`pl
-
-nnoremap S( mpva(<ESC>`>x`<x`ph
-nnoremap S" mpva"<ESC>`>x`<x`ph
-nnoremap S' mpva'<ESC>`>x`<x`ph
-nnoremap S[ mpva[<ESC>`>x`<x`ph
-nnoremap S< mpva<<ESC>`>x`<x`ph
-nnoremap S{ mpva{<ESC>`>x`<x`ph
-
-onoremap in( :<C-U>normal! f(vi(<CR>
-onoremap in< :<C-U>normal! f<vi<<CR>
-onoremap in[ :<C-U>normal! f[vi[<CR>
-onoremap in" :<C-U>normal! f"vi"<CR>
-onoremap in' :<C-U>normal! f'vi'<CR>
-onoremap in{ :<C-U>normal! f{vi{<CR>
 " }}}
 
 " Vimscript file settings {{{
