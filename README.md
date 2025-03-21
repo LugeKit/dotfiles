@@ -1,5 +1,9 @@
 put folder `dotfiles` under `$HOME`
 
+# input method
+1. Download Sogou
+2. Go to system settings - shortcuts - modifier: Capslock -> Earth-key
+
 # hammerspoon
 ```bash
 rm ~/.hammerspoon/init.lua

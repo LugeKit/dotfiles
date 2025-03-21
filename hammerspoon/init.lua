@@ -23,7 +23,7 @@ function reloadConfig(files)
 end
 configReloadWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/dotfiles/hammerspoon/", reloadConfig)
 configReloadWatcher:start()
-sendNotify("Config loaded")
+alert("hs config reloaded")
 
 
 -- resize window
@@ -91,7 +91,7 @@ local appLanguage = {
 
 local languageIM = {
     ["English"] = "com.apple.keylayout.ABC",
-    ["Chinese"] = "com.apple.inputmethod.SCIM.ITABC"
+    ["Chinese"] = "com.sogou.inputmethod.sogou.pinyin"
 }
 
 dismissLarkHotkey = hs.hotkey.new({"cmd"}, "w", function()
@@ -146,5 +146,6 @@ end)
 hs.hotkey.bind({"cmd", "ctrl"}, "t", function()
     local app = hs.window.focusedWindow():application():name()
     alert(app)
+    alert(hs.keycodes.currentSourceID())
 end)
 
