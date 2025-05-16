@@ -7,7 +7,14 @@ function sendNotify(content, title)
     hs.notify.new({title=title, informativeText=content}):send()
 end
 
-alert = hs.alert.show
+local debug = false
+
+alert = function(msg)
+    if debug then
+        hs.alert.show(msg)
+    end
+end
+bindKey = hs.hotkey.bind
 
 -- auto reload when init.lua is changed
 function reloadConfig(files)
@@ -74,15 +81,15 @@ function moveWindow(direction)
     win:move(position)
 end
 
-hs.hotkey.bind({"ctrl", "shift"}, "Left", hs.fnutils.partial(moveWindow, "left"))
-hs.hotkey.bind({"ctrl", "shift"}, "Right", hs.fnutils.partial(moveWindow, "right"))
-hs.hotkey.bind({"ctrl", "shift"}, "Up", hs.fnutils.partial(moveWindow, "up"))
-hs.hotkey.bind({"ctrl", "shift"}, "Down", hs.fnutils.partial(moveWindow, "down"))
-hs.hotkey.bind({"ctrl", "shift"}, "[", hs.fnutils.partial(moveWindow, "up_left"))
-hs.hotkey.bind({"ctrl", "shift"}, "]", hs.fnutils.partial(moveWindow, "up_right"))
-hs.hotkey.bind({"ctrl", "shift"}, ";", hs.fnutils.partial(moveWindow, "down_left"))
-hs.hotkey.bind({"ctrl", "shift"}, "'", hs.fnutils.partial(moveWindow, "down_right"))
-hs.hotkey.bind({"ctrl", "shift"}, "\\", hs.fnutils.partial(moveWindow, "max"))
+bindKey({"ctrl", "shift"}, "Left", hs.fnutils.partial(moveWindow, "left"))
+bindKey({"ctrl", "shift"}, "Right", hs.fnutils.partial(moveWindow, "right"))
+bindKey({"ctrl", "shift"}, "Up", hs.fnutils.partial(moveWindow, "up"))
+bindKey({"ctrl", "shift"}, "Down", hs.fnutils.partial(moveWindow, "down"))
+bindKey({"ctrl", "shift"}, "[", hs.fnutils.partial(moveWindow, "up_left"))
+bindKey({"ctrl", "shift"}, "]", hs.fnutils.partial(moveWindow, "up_right"))
+bindKey({"ctrl", "shift"}, ";", hs.fnutils.partial(moveWindow, "down_left"))
+bindKey({"ctrl", "shift"}, "'", hs.fnutils.partial(moveWindow, "down_right"))
+bindKey({"ctrl", "shift"}, "\\", hs.fnutils.partial(moveWindow, "max"))
 
 -- auto change input method
 local appLanguage = {
@@ -111,7 +118,20 @@ local function changeIM(language)
     end
 end
 
+local lastApp1 = nil
+local lastApp2 = nil
+bindKey({"alt"}, "`", function()
+    if lastApp2 ~= nil then
+        if lastApp2 == "飞书" then
+            lastApp2 = "Lark"
+        end
+        hs.application.launchOrFocus(lastApp2)
+    end
+end)
+
+
 function onAppChange(appName)
+    alert("current app is: " .. appName)
     -- lark will not lose focus when cmd+w close it window
     -- so force it to hide
     if appName == "飞书" then
@@ -123,6 +143,9 @@ function onAppChange(appName)
     -- if language is not set spcifically, set it to ABC
     local language = appLanguage[appName] or "English"
     changeIM(language)
+
+    lastApp2 = lastApp1
+    lastApp1 = appName
 end
 
 appWatcher = hs.application.watcher.new(function(appName, eventType, appObject)
@@ -133,17 +156,17 @@ end)
 appWatcher:start()
 
 -- terminal
-hs.hotkey.bind({"option"}, "z", function()
+bindKey({"option"}, "z", function()
     local term = hs.application.get("Ghostty")
     if term and term:isFrontmost() then
         term:hide()
         return
     end
-    hs.application.launchOrFocus("Ghostty.app")
+    hs.application.launchOrFocus("Ghostty")
 end)
 
 -- test
-hs.hotkey.bind({"cmd", "ctrl"}, "t", function()
+bindKey({"cmd", "ctrl"}, "t", function()
     local app = hs.window.focusedWindow():application():name()
     alert(app)
     alert(hs.keycodes.currentSourceID())
