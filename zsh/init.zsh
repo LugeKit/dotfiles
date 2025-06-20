@@ -17,7 +17,12 @@ git config --global alias.co checkout
 git config --global alias.br branch
 git config --global alias.aa 'add --all'
 git config --global alias.cm 'commit -m'
+git config --global alias.ca 'commit --amend'
+git config --global alias.can 'commit --amend --no-edit'
 git config --global alias.st status
+git config --global alias.r rebase
+git config --global alias.rc 'rebase --continue'
+git config --global alias.ra 'rebase --abort'
 git config --global push.autoSetupRemote true
 
 gpw() {
