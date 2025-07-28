@@ -1,7 +1,6 @@
 source ~/dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/dotfiles/zsh/prompt.zsh
 source ~/dotfiles/zsh/completions.zsh
-source ~/dotfiles/zsh/vim.zsh
 
 # should be placed after vim
 source ~/dotfiles/zsh/zsh-autopair/autopair.zsh
