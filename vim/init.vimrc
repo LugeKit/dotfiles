@@ -82,19 +82,6 @@ xnoremap <leader>s :s/\v
 nnoremap <F1> :below terminal<CR>
 " }}}
 
-" Register settings {{{
-nnoremap x "_x
-nnoremap c "_c
-nnoremap C "_C
-nnoremap <leader>d "_d
-nnoremap <leader>D "_D
-xnoremap x "_x
-xnoremap c "_c
-xnoremap C "_C
-xnoremap <leader>d "_d
-xnoremap <leader>D "_D
-" }}}
-
 " Vimscript file settings {{{
 augroup filetype_vim
 	autocmd!
