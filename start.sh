@@ -31,12 +31,19 @@ read -p "Enter Hammerspoon dir [${DEFAULT_HAMMERSPOON}]: " HAMMERSPOON_DIR
 HAMMERSPOON_DIR=${HAMMERSPOON_DIR:-$DEFAULT_HAMMERSPOON}
 HAMMERSPOON_DIR="${HAMMERSPOON_DIR/#\~/$HOME}"
 
-echo $DOTFILES_DIR
-echo $VIMRC_PATH
-echo $ZSHRC_PATH
-echo $GHOSTTY_DIR
-echo $HAMMERSPOON_DIR
-exit 1
+
+echo ""
+echo "----------------------------------------------------------------"
+echo "Configuration Summary:"
+echo "Dotfiles Dir:    $DOTFILES_DIR"
+echo "Vimrc Path:      $VIMRC_PATH"
+echo "Zshrc Path:      $ZSHRC_PATH"
+echo "Ghostty Dir:     $GHOSTTY_DIR"
+echo "Hammerspoon Dir: $HAMMERSPOON_DIR"
+echo "----------------------------------------------------------------"
+echo ""
+
+read -p "Press Enter to continue setup or Ctrl+C to cancel..."
 
 cd "$DOTFILES_DIR" && git submodule init && git submodule update
 if [ $? -ne 0 ]; then
