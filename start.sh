@@ -1,36 +1,78 @@
 #!/bin/bash
 
-# Default Dotfiles Directory (Current Directory)
-DEFAULT_DOTFILES_DIR=$(pwd)
-read -p "Enter dotfiles path [${DEFAULT_DOTFILES_DIR}]: " DOTFILES_DIR
-DOTFILES_DIR=${DOTFILES_DIR:-$DEFAULT_DOTFILES_DIR}
-# Expand tilde if present
-DOTFILES_DIR="${DOTFILES_DIR/#\~/$HOME}"
+# Helper function to get path input
+get_path() {
+    local desc=$1
+    local default=$2
+    local path
 
-# Default Vimrc Path
-DEFAULT_VIMRC="$HOME/.vimrc"
-read -p "Enter .vimrc path [${DEFAULT_VIMRC}]: " VIMRC_PATH
-VIMRC_PATH=${VIMRC_PATH:-$DEFAULT_VIMRC}
-VIMRC_PATH="${VIMRC_PATH/#\~/$HOME}"
+    read -p "Enter $desc [$default]: " path
+    path=${path:-$default}
+    # Expand tilde if present
+    echo "${path/#\~/$HOME}"
+}
 
-# Default Zshrc Path
-DEFAULT_ZSHRC="$HOME/.zshrc"
-read -p "Enter .zshrc path [${DEFAULT_ZSHRC}]: " ZSHRC_PATH
-ZSHRC_PATH=${ZSHRC_PATH:-$DEFAULT_ZSHRC}
-ZSHRC_PATH="${ZSHRC_PATH/#\~/$HOME}"
+# Helper function to confirm action
+# Returns 0 (true) if user confirms, 1 (false) otherwise
+confirm() {
+    local prompt=$1
+    local response
+    read -p "$prompt [Y/n/space to skip]: " response
+    # Default to Yes if empty, accept Y/y. Reject others (n, space, etc.)
+    if [[ -z "$response" || "$response" =~ ^[Yy]$ ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
 
-# Default Ghostty Config Dir
-DEFAULT_GHOSTTY="$HOME/.config/ghostty"
-read -p "Enter Ghostty config dir [${DEFAULT_GHOSTTY}]: " GHOSTTY_DIR
-GHOSTTY_DIR=${GHOSTTY_DIR:-$DEFAULT_GHOSTTY}
-GHOSTTY_DIR="${GHOSTTY_DIR/#\~/$HOME}"
+# Helper function to append configuration to a file
+append_config() {
+    local file_path=$1
+    local source_line=$2
+    
+    if [ -f "$file_path" ]; then
+        if grep -qF "$source_line" "$file_path"; then
+            echo "Configuration already present in $file_path"
+        else
+            echo "$source_line" >> "$file_path"
+            echo "Configuration added to $file_path"
+        fi
+    else
+        # Create directory path if it doesn't exist (e.g. for .config/file)
+        mkdir -p "$(dirname "$file_path")"
+        echo "$source_line" >> "$file_path"
+        echo "Created $file_path and added configuration."
+    fi
+}
 
-# Default Hammerspoon Dir
-DEFAULT_HAMMERSPOON="$HOME/.hammerspoon"
-read -p "Enter Hammerspoon dir [${DEFAULT_HAMMERSPOON}]: " HAMMERSPOON_DIR
-HAMMERSPOON_DIR=${HAMMERSPOON_DIR:-$DEFAULT_HAMMERSPOON}
-HAMMERSPOON_DIR="${HAMMERSPOON_DIR/#\~/$HOME}"
+# Helper function to create symlink safely
+link_config() {
+    local target_dir=$1
+    local link_name=$2
+    local source_path=$3
 
+    mkdir -p "$target_dir"
+    local target_path="$target_dir/$link_name"
+    
+    if [ -L "$target_path" ]; then
+        echo "Symlink $target_path already exists."
+    elif [ -e "$target_path" ]; then
+        echo "Warning: $target_path exists and is not a symlink. Skipping."
+    else
+        ln -s "$source_path" "$target_path"
+        echo "Linked $source_path to $target_path"
+    fi
+}
+
+# --- Configuration Setup ---
+
+echo "Configuration Setup..."
+DOTFILES_DIR=$(get_path "dotfiles path" "$(pwd)")
+VIMRC_PATH=$(get_path ".vimrc path" "$HOME/.vimrc")
+ZSHRC_PATH=$(get_path ".zshrc path" "$HOME/.zshrc")
+GHOSTTY_DIR=$(get_path "Ghostty config dir" "$HOME/.config/ghostty")
+HAMMERSPOON_DIR=$(get_path "Hammerspoon dir" "$HOME/.hammerspoon")
 
 echo ""
 echo "----------------------------------------------------------------"
@@ -43,18 +85,46 @@ echo "Hammerspoon Dir: $HAMMERSPOON_DIR"
 echo "----------------------------------------------------------------"
 echo ""
 
-read -p "Press Enter to continue setup or Ctrl+C to cancel..."
-
-cd "$DOTFILES_DIR" && git submodule init && git submodule update
-if [ $? -ne 0 ]; then
-    echo "Error: failed to init git submodule, please check your network or dotfiles path"
-    exit 1
+if ! confirm "Proceed with installation?"; then
+    echo "Installation cancelled."
+    exit 0
 fi
 
-echo "source $DOTFILES_DIR/vim/init.vimrc" >> "$VIMRC_PATH"
-echo "source $DOTFILES_DIR/zsh/init.zsh" >> "$ZSHRC_PATH"
+# --- Installation Steps ---
 
-mkdir -p "$GHOSTTY_DIR" && ln -s "$DOTFILES_DIR/ghostty/config" "$GHOSTTY_DIR/config"
-mkdir -p "$HAMMERSPOON_DIR" && ln -s "$DOTFILES_DIR/hammerspoon/init.lua" "$HAMMERSPOON_DIR/init.lua"
+# 1. Git Submodules
+if confirm "Initialize git submodules?"; then
+    cd "$DOTFILES_DIR" && git submodule init && git submodule update
+    if [ $? -ne 0 ]; then
+        echo "Error: failed to init git submodule, please check your network or dotfiles path"
+    fi
+fi
 
-echo "Init successfully, please reopen your terminal"
+# 2. Vim Configuration
+if confirm "Configure Vim?"; then
+    append_config "$VIMRC_PATH" "source $DOTFILES_DIR/vim/init.vimrc"
+fi
+
+# 3. Zsh Configuration
+if confirm "Configure Zsh?"; then
+    append_config "$ZSHRC_PATH" "source $DOTFILES_DIR/zsh/init.zsh"
+fi
+
+# 4. Ghostty Configuration
+if confirm "Configure Ghostty?"; then
+    link_config "$GHOSTTY_DIR" "config" "$DOTFILES_DIR/ghostty/config"
+fi
+
+# 5. Hammerspoon Configuration
+OS="$(uname -s)"
+# Check for Windows environments (MINGW, CYGWIN, MSYS)
+if [[ "$OS" == *"MINGW"* || "$OS" == *"CYGWIN"* || "$OS" == *"MSYS"* ]]; then
+    echo "Windows detected. Skipping Hammerspoon configuration."
+else
+    if confirm "Configure Hammerspoon?"; then
+        link_config "$HAMMERSPOON_DIR" "init.lua" "$DOTFILES_DIR/hammerspoon/init.lua"
+    fi
+fi
+
+echo ""
+echo "Setup process completed. Please reopen your terminal."
