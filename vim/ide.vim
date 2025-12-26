@@ -1,4 +1,3 @@
-" Jetbrains IDE settings {{{
 if exists("&ide")
 	set highlightedyank
 	set clipboard+=ideaput
@@ -27,9 +26,9 @@ if exists("&ide")
 	nmap <C-[> <Action>(PreviousTab)
 	imap <C-i> <Action>(ParameterInfo)
 	imap <C-w> <Action>(EditorDeleteToWordStart)
+    imap <C-l> <Action>(InsertInlineCompletionAction)
 
 	command! GT action RunClass
     command! FM action ReformatCode
     command! FMF action ReformatFile
 endif
-" }}}

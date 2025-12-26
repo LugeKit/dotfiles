@@ -58,10 +58,6 @@ nnoremap ; :
 nnoremap : ;
 nnoremap <silent> <leader>ta :tabo<CR>
 nnoremap <silent> <leader>// :rightbelow vsplit $MYVIMRC<CR>
-inoremap <C-h> <Left>
-inoremap <C-l> <Right>
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
 inoremap <C-D> <Esc>
 inoremap <C-x> <Delete>
 cnoremap <C-h> <Left>
