@@ -63,7 +63,25 @@
         "selectPrevSuggestion"
       ],
       "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
-    }
+    },
+    {
+      "before": [
+        "<C-i>"
+      ],
+      "commands": [
+        "editor.action.triggerParameterHints"
+      ],
+      "when": "editorHasSignatureHelpProvider && editorTextFocus && !editorHasParameterHints"
+    },
+    {
+      "before": [
+        "<C-p>"
+      ],
+      "commands": [
+        "closeParameterHints"
+      ],
+      "when": "editorHasParameterHints"
+    },
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
     {
@@ -114,17 +132,6 @@
     },
     {
       "before": [
-        "leader",
-        "f",
-        "s"
-      ],
-      "commands": [
-        "workbench.view.search"
-      ],
-      "when": "workbench.view.search.active && neverMatch =~ /doesNotMatch/"
-    },
-    {
-      "before": [
         ":"
       ],
       "after": [
@@ -137,18 +144,6 @@
       ],
       "after": [
         ":"
-      ]
-    }
-  ],
-  "vim.visualModeKeyBindings": [
-    {
-      "before": [
-        "f"
-      ],
-      "after": [
-        "leader",
-        "leader",
-        "s"
       ]
     }
   ],
@@ -163,16 +158,6 @@
         "<C-]>"
       ]
     },
-    {
-      "before": [
-        "f"
-      ],
-      "after": [
-        "leader",
-        "leader",
-        "s"
-      ]
-    }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
@@ -185,18 +170,6 @@
         "editor.action.goToReferences"
       ],
       "when": "editorHasReferenceProvider"
-    },
-    {
-      "before": [
-        "leader",
-        "s"
-      ],
-      "after": [
-        ":",
-        "%",
-        "s",
-        "/"
-      ]
     },
     {
       "before": [
@@ -297,18 +270,6 @@
     },
     {
       "before": [
-        "leader",
-        "s"
-      ],
-      "after": [
-        ":",
-        "%",
-        "s",
-        "/"
-      ]
-    },
-    {
-      "before": [
         "<C-L>"
       ],
       "after": [
@@ -359,18 +320,7 @@
         "s"
       ],
       "commands": [
-        "workbench.view.search"
-      ],
-      "when": "workbench.view.search.active && neverMatch =~ /doesNotMatch/"
-    },
-    {
-      "before": [
-        "leader",
-        "f",
-        "a"
-      ],
-      "commands": [
-        "workbench.action.showAllSymbols"
+        "workbench.action.quickTextSearch"
       ]
     },
     {
@@ -458,6 +408,15 @@
         "editor.action.quickFix"
       ],
       "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
+    },
+    {
+      "before": [
+        "leader",
+        "F"
+      ],
+      "commands": [
+        "editor.action.formatDocument"
+      ]
     }
   ],
   "[python]": {
@@ -478,4 +437,12 @@
   "workbench.settings.applyToAllProfiles": [],
   "AI.toolcall.v2.command.allowList": "[\"npm\"]",
   "editor.inlayHints.enabled": "off",
+  "gitlens.launchpad.indicator.enabled": false,
+  "[go]": {
+    "editor.insertSpaces": false,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
 }

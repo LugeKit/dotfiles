@@ -98,5 +98,14 @@
         "key": "ctrl+j",
         "command": "quickInput.next",
         "when": "inQuickInput && quickInputType == 'quickPick' || inQuickInput && quickInputType == 'quickTree'"
+    },
+    {
+        "key": "f2",
+        "command": "workbench.action.problems.focus"
+    },
+    {
+        "key": "f2",
+        "command": "-editor.action.rename",
+        "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
     }
 ]
