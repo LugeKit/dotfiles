@@ -1,0 +1,481 @@
+{
+  "editor.fontFamily": "JetBrains Mono",
+  "editor.fontSize": 14,
+  "editor.fontLigatures": true,
+  "explorer.confirmDelete": false,
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  "workbench.tree.indent": 20,
+  "terminal.integrated.fontFamily": "JetBrains Mono",
+  "terminal.integrated.fontSize": 13,
+  "terminal.integrated.lineHeight": 1.15,
+  "editor.wordWrap": "on",
+  "editor.minimap.showSlider": "always",
+  "terminal.integrated.tabs.enabled": true,
+  "terminal.external.windowsExec": "E:\\files\\tools\\Windows Terminal",
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.profiles.windows": {
+    "PowerShell": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell"
+    },
+    "Command Prompt": {
+      "path": [
+        "${env:windir}\\Sysnative\\cmd.exe",
+        "${env:windir}\\System32\\cmd.exe"
+      ],
+      "args": [],
+      "icon": "terminal-cmd"
+    },
+    "Git Bash": {
+      "source": "Git Bash"
+    },
+    "Windows PowerShell": {
+      "path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+    }
+  },
+  "security.workspace.trust.untrustedFiles": "open",
+  "remote.SSH.remotePlatform": {
+    "192.168.43.129": "linux"
+  },
+  "vim.incsearch": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.leader": "<space>",
+  "vim.smartRelativeLine": true,
+  "vim.easymotion": true,
+  "vim.insertModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<C-j>"
+      ],
+      "commands": [
+        "selectNextSuggestion"
+      ],
+      "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
+    },
+    {
+      "before": [
+        "<C-k>"
+      ],
+      "commands": [
+        "selectPrevSuggestion"
+      ],
+      "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "y"
+      ],
+      "after": [
+        "y",
+        "`",
+        ">"
+      ]
+    },
+    {
+      "before": [
+        "<C-h>"
+      ],
+      "after": [
+        "^"
+      ]
+    },
+    {
+      "before": [
+        "<C-l>"
+      ],
+      "after": [
+        "$"
+      ]
+    },
+    {
+      "before": [
+        "<C-j>"
+      ],
+      "after": [
+        "1",
+        "0",
+        "j"
+      ]
+    },
+    {
+      "before": [
+        "<C-k>"
+      ],
+      "after": [
+        "1",
+        "0",
+        "k"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "f",
+        "s"
+      ],
+      "commands": [
+        "workbench.view.search"
+      ],
+      "when": "workbench.view.search.active && neverMatch =~ /doesNotMatch/"
+    },
+    {
+      "before": [
+        ":"
+      ],
+      "after": [
+        ";"
+      ]
+    },
+    {
+      "before": [
+        ";"
+      ],
+      "after": [
+        ":"
+      ]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    {
+      "before": [
+        "f"
+      ],
+      "after": [
+        "leader",
+        "leader",
+        "s"
+      ]
+    }
+  ],
+  "vim.normalModeKeyBindings": [
+    {
+      "before": [
+        "leader",
+        "f",
+        "d"
+      ],
+      "after": [
+        "<C-]>"
+      ]
+    },
+    {
+      "before": [
+        "f"
+      ],
+      "after": [
+        "leader",
+        "leader",
+        "s"
+      ]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "leader",
+        "f",
+        "r"
+      ],
+      "commands": [
+        "editor.action.goToReferences"
+      ],
+      "when": "editorHasReferenceProvider"
+    },
+    {
+      "before": [
+        "leader",
+        "s"
+      ],
+      "after": [
+        ":",
+        "%",
+        "s",
+        "/"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "f",
+        "i"
+      ],
+      "commands": [
+        "editor.action.goToImplementation"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "n"
+      ],
+      "commands": [
+        "workbench.action.toggleSidebarVisibility"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "g",
+        "n"
+      ],
+      "commands": [
+        "workbench.action.editor.nextChange"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "g",
+        "N"
+      ],
+      "commands": [
+        "workbench.action.editor.previousChange"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "g",
+        "p"
+      ],
+      "commands": [
+        "editor.action.dirtydiff.next"
+      ]
+    },
+    {
+      "before": [
+        "K"
+      ],
+      "commands": [
+        "editor.action.showHover"
+      ]
+    },
+    {
+      "before": [
+        "<Esc>"
+      ],
+      "commands": [
+        ":nohl"
+      ]
+    },
+    {
+      "before": [
+        ";"
+      ],
+      "after": [
+        ":"
+      ]
+    },
+    {
+      "before": [
+        ":"
+      ],
+      "after": [
+        ";"
+      ]
+    },
+    {
+      "before": [
+        "<Tab>"
+      ],
+      "after": [
+        "/"
+      ]
+    },
+    {
+      "before": [
+        "<S-Tab>"
+      ],
+      "after": [
+        "?"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "s"
+      ],
+      "after": [
+        ":",
+        "%",
+        "s",
+        "/"
+      ]
+    },
+    {
+      "before": [
+        "<C-L>"
+      ],
+      "after": [
+        "$"
+      ]
+    },
+    {
+      "before": [
+        "<C-h>"
+      ],
+      "after": [
+        "^"
+      ]
+    },
+    {
+      "before": [
+        "<C-k>"
+      ],
+      "after": [
+        "1",
+        "0",
+        "k"
+      ]
+    },
+    {
+      "before": [
+        "<C-j>"
+      ],
+      "after": [
+        "1",
+        "0",
+        "j"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "l"
+      ],
+      "commands": [
+        "workbench.explorer.fileView.focus"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "f",
+        "s"
+      ],
+      "commands": [
+        "workbench.view.search"
+      ],
+      "when": "workbench.view.search.active && neverMatch =~ /doesNotMatch/"
+    },
+    {
+      "before": [
+        "leader",
+        "f",
+        "a"
+      ],
+      "commands": [
+        "workbench.action.showAllSymbols"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "f",
+        "f"
+      ],
+      "commands": [
+        "workbench.action.quickOpen"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "r",
+        "n"
+      ],
+      "commands": [
+        "editor.action.rename"
+      ],
+      "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+      "before": [
+        "leader",
+        "1"
+      ],
+      "commands": [
+        "workbench.action.openEditorAtIndex1"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "2"
+      ],
+      "commands": [
+        "workbench.action.openEditorAtIndex2"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "3"
+      ],
+      "commands": [
+        "workbench.action.openEditorAtIndex3"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "4"
+      ],
+      "commands": [
+        "workbench.action.openEditorAtIndex4"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "5"
+      ],
+      "commands": [
+        "workbench.action.openEditorAtIndex5"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "6"
+      ],
+      "commands": [
+        "workbench.action.openEditorAtIndex6"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "c",
+        "a"
+      ],
+      "commands": [
+        "editor.action.quickFix"
+      ],
+      "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
+    }
+  ],
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "editor.formatOnSave": true,
+  "vim.foldfix": true,
+  "editor.suggestSelection": "recentlyUsed",
+  "editor.suggest.shareSuggestSelections": true,
+  "gopls": {},
+  "go.disableConcurrentTests": true,
+  "go.testFlags": [
+    "-gcflags=all=-l"
+  ],
+  "editor.unicodeHighlight.nonBasicASCII": false,
+  "git.openRepositoryInParentFolders": "never",
+  "workbench.colorTheme": "IntelliJ IDEA New UI Light with Light Header",
+  "workbench.settings.applyToAllProfiles": [],
+  "AI.toolcall.v2.command.allowList": "[\"npm\"]",
+  "editor.inlayHints.enabled": "off",
+}

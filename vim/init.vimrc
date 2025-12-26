@@ -87,4 +87,3 @@ augroup end
 " }}}
 
 source ~/dotfiles/vim/ide.vim
-
