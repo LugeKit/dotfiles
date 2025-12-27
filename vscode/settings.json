@@ -52,8 +52,7 @@
       ],
       "commands": [
         "selectNextSuggestion"
-      ],
-      "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
+      ]
     },
     {
       "before": [
@@ -62,7 +61,6 @@
       "commands": [
         "selectPrevSuggestion"
       ],
-      "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
     },
     {
       "before": [
@@ -71,7 +69,6 @@
       "commands": [
         "editor.action.triggerParameterHints"
       ],
-      "when": "editorHasSignatureHelpProvider && editorTextFocus && !editorHasParameterHints"
     },
     {
       "before": [
@@ -80,7 +77,6 @@
       "commands": [
         "closeParameterHints"
       ],
-      "when": "editorHasParameterHints"
     },
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
@@ -168,8 +164,7 @@
       ],
       "commands": [
         "editor.action.goToReferences"
-      ],
-      "when": "editorHasReferenceProvider"
+      ]
     },
     {
       "before": [
@@ -342,7 +337,6 @@
       "commands": [
         "editor.action.rename"
       ],
-      "when": "editorTextFocus && !editorReadonly"
     },
     {
       "before": [
@@ -407,7 +401,6 @@
       "commands": [
         "editor.action.quickFix"
       ],
-      "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
     },
     {
       "before": [
@@ -419,9 +412,6 @@
       ]
     }
   ],
-  "[python]": {
-    "editor.formatOnType": true
-  },
   "editor.formatOnSave": true,
   "vim.foldfix": true,
   "editor.suggestSelection": "recentlyUsed",
@@ -437,7 +427,6 @@
   "workbench.settings.applyToAllProfiles": [],
   "AI.toolcall.v2.command.allowList": "[\"npm\"]",
   "editor.inlayHints.enabled": "off",
-  "gitlens.launchpad.indicator.enabled": false,
   "[go]": {
     "editor.insertSpaces": false,
     "editor.formatOnSave": true,
