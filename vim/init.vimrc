@@ -56,6 +56,8 @@ noremap <C-j> 5j
 noremap <C-k> 5k
 nnoremap ; :
 nnoremap : ;
+nnoremap <leader>p' vi'p
+nnoremap <leader>p" vi"p
 nnoremap <silent> <leader>ta :tabo<CR>
 nnoremap <silent> <leader>// :rightbelow vsplit $MYVIMRC<CR>
 inoremap <C-D> <Esc>
