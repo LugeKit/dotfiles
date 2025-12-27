@@ -147,6 +147,16 @@
     {
       "before": [
         "leader",
+        "f",
+        "D"
+      ],
+      "commands": [
+        "editor.action.goToTypeDefinition"
+      ]
+    },
+    {
+      "before": [
+        "leader",
         "p",
         "'"
       ],
@@ -409,5 +419,6 @@
   "editor.renderWhitespace": "none",
   "editor.largeFileOptimizations": true,
   "editor.smoothScrolling": false,
-  "editor.scrollBeyondLastLine": false
+  "editor.scrollBeyondLastLine": false,
+  "trae.tab.enableSmartEdit": false
 }
