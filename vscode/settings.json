@@ -11,7 +11,7 @@
   "terminal.integrated.fontSize": 13,
   "terminal.integrated.lineHeight": 1.15,
   "editor.wordWrap": "on",
-  "editor.minimap.showSlider": "always",
+  "editor.minimap.showSlider": "mouseover",
   "terminal.integrated.tabs.enabled": true,
   "terminal.external.windowsExec": "E:\\files\\tools\\Windows Terminal",
   "terminal.integrated.defaultProfile.windows": "PowerShell",
@@ -44,7 +44,6 @@
   "vim.hlsearch": true,
   "vim.leader": "<space>",
   "vim.smartRelativeLine": true,
-  "vim.easymotion": true,
   "vim.insertModeKeyBindingsNonRecursive": [
     {
       "before": [
@@ -143,7 +142,7 @@
       ]
     }
   ],
-  "vim.normalModeKeyBindings": [
+  "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": [
         "leader",
@@ -154,8 +153,6 @@
         "<C-]>"
       ]
     },
-  ],
-  "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": [
         "leader",
@@ -380,4 +377,12 @@
       "source.organizeImports": "explicit"
     }
   },
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.acceptSuggestionOnEnter": "off",
+  "editor.cursorBlinking": "solid",
+  "editor.renderWhitespace": "none",
+  "editor.largeFileOptimizations": true,
+  "editor.smoothScrolling": false,
+  "editor.scrollBeyondLastLine": false,
+  "editor.experimentalGpuAcceleration": "on",
 }
