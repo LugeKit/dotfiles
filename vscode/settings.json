@@ -43,6 +43,7 @@
   "vim.useCtrlKeys": true,
   "vim.hlsearch": true,
   "vim.leader": "<space>",
+  "vim.foldfix": true,
   "vim.smartRelativeLine": true,
   "vim.insertModeKeyBindingsNonRecursive": [
     {
@@ -143,6 +144,32 @@
     }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "leader",
+        "p",
+        "'"
+      ],
+      "after": [
+        "v",
+        "i",
+        "'",
+        "p"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "p",
+        "\""
+      ],
+      "after": [
+        "v",
+        "i",
+        "\"",
+        "p"
+      ]
+    },
     {
       "before": [
         "leader",
@@ -356,7 +383,6 @@
     }
   ],
   "editor.formatOnSave": true,
-  "vim.foldfix": true,
   "editor.suggestSelection": "recentlyUsed",
   "editor.suggest.shareSuggestSelections": true,
   "gopls": {},
@@ -383,6 +409,5 @@
   "editor.renderWhitespace": "none",
   "editor.largeFileOptimizations": true,
   "editor.smoothScrolling": false,
-  "editor.scrollBeyondLastLine": false,
-  "editor.experimentalGpuAcceleration": "on",
+  "editor.scrollBeyondLastLine": false
 }
