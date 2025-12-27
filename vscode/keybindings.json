@@ -1,5 +1,21 @@
 [
     {
+        "key": "enter",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "list.select", // 执行跳转
+                "list.select", // 关闭速览窗口，给Trae的临时fix，现在需要跳转两次
+            ]
+        },
+        "when": "listFocus && !inputFocus && !treeElementHasChild"
+    },
+    {
+        "key": "enter",
+        "command": "list.expand",
+        "when": "listFocus && treeElementCanExpand && !inputFocus && !treestickyScrollFocused || listFocus && treeElementHasChild && !inputFocus && !treestickyScrollFocused"
+    },
+    {
         "key": "f1",
         "command": "-workbench.action.showCommands"
     },
@@ -92,11 +108,6 @@
     {
         "key": "ctrl+k",
         "command": "quickInput.previous",
-        "when": "inQuickInput && quickInputType == 'quickPick' || inQuickInput && quickInputType == 'quickTree'"
-    },
-    {
-        "key": "ctrl+j",
-        "command": "quickInput.next",
         "when": "inQuickInput && quickInputType == 'quickPick' || inQuickInput && quickInputType == 'quickTree'"
     },
     {
@@ -197,5 +208,15 @@
         "key": "ctrl+w",
         "command": "deleteWordLeft",
         "when": "textInputFocus && !editorReadonly"
-    }
+    },
+    {
+        "key": "enter",
+        "command": "-list.select",
+        "when": "listFocus && !inputFocus && !treestickyScrollFocused"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "quickInput.next",
+        "when": "inQuickInput && quickInputType == 'quickPick' || inQuickInput && quickInputType == 'quickTree'"
+    },
 ]
