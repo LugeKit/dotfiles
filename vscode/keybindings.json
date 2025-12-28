@@ -1,5 +1,21 @@
 [
     {
+        "key": "ctrl+b",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "workbench.action.toggleSidebarVisibility",
+                "workbench.action.focusSideBar",
+            ]
+        },
+        "when": "!sideBarFocus"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "sideBarFocus"
+    },
+    {
         "key": "f1",
         "command": "-workbench.action.showCommands"
     },
@@ -228,5 +244,55 @@
         "key": "tab",
         "command": "-editor.action.inlineSuggest.commit",
         "when": "inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "-extension.vim_ctrl+b",
+        "when": "editorTextFocus && vim.active && vim.use<C-b> && !inDebugRepl && vim.mode != 'Insert'"
+    },
+    {
+        "key": "escape",
+        "command": "-editor.action.inlineSuggest.hide",
+        "when": "inInlineEditsPreviewEditor"
+    },
+    {
+        "key": "shift+escape",
+        "command": "editor.action.inlineSuggest.hide",
+        "when": "inInlineEditsPreviewEditor || inlineSuggestionVisible"
+    },
+    {
+        "key": "shift+escape",
+        "command": "-editor.action.inlineSuggest.hide",
+        "when": "inInlineEditsPreviewEditor"
+    },
+    {
+        "key": "escape",
+        "command": "-editor.action.inlineSuggest.hide",
+        "when": "inlineEditIsVisible || inlineSuggestionVisible"
+    },
+    {
+        "key": "shift+escape",
+        "command": "trae.clearRecommendedEdits",
+        "when": "cueInlineSuggestionVisible && trae.hasEditOfCurrentEditor && !editorReadonly || trae.hasEditOfCurrentEditor && !editorReadonly && !inlineSuggestionVisible"
+    },
+    {
+        "key": "escape",
+        "command": "-trae.clearRecommendedEdits",
+        "when": "cueInlineSuggestionVisible && trae.hasEditOfCurrentEditor && !editorReadonly || trae.hasEditOfCurrentEditor && !editorReadonly && !inlineSuggestionVisible"
+    },
+    {
+        "key": "escape",
+        "command": "-hideSuggestWidget",
+        "when": "suggestWidgetVisible && textInputFocus"
+    },
+    {
+        "key": "shift+escape",
+        "command": "trae.clearRecommendedEdits.IDE",
+        "when": "cueInlineSuggestionVisible && trae.hasEditOfCurrentEditor && !editorReadonly || trae.hasEditOfCurrentEditor && !editorReadonly && !inlineSuggestionVisible"
+    },
+    {
+        "key": "escape",
+        "command": "-trae.clearRecommendedEdits.IDE",
+        "when": "cueInlineSuggestionVisible && trae.hasEditOfCurrentEditor && !editorReadonly || trae.hasEditOfCurrentEditor && !editorReadonly && !inlineSuggestionVisible"
     },
 ]
