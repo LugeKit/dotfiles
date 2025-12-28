@@ -20,7 +20,7 @@ function Prompt {
 
   $git_info = ""
   # 检查是否在 git 仓库
-  git rev-parse --is-inside-work-tree 2>$null | Out-Null
+  git rev-parse --is-inside-work-tree *>$null
   if ($?) {
     # 1. 分支名
     $branch = git branch --show-current --no-color
@@ -32,20 +32,15 @@ function Prompt {
     # 3. 统计待推送 (Ahead) 和 待拉取 (Behind)
     # @{u} 代表当前分支追踪的远程分支
     $ahead_behind = git rev-list --left-right --count "HEAD...@{u}" 2>$null
-    $push_pull_str = ""
     if ($?) {
-      if ($ahead_behind -match "(\d+)\s+(\d+)") {
-        $ahead = $Matches[1]
-        $behind = $Matches[2]
-        if ($ahead -gt 0) { $push_pull_str += " ↑$ahead" }  # 待推送
-        if ($behind -gt 0) { $push_pull_str += " ↓$behind" } # 待拉取
-      }
+        $push_pull_str = ""
+        if ($ahead_behind -match "(\d+)\s+(\d+)") {
+            $ahead = $Matches[1]
+            $behind = $Matches[2]
+            if ($ahead -gt 0) { $push_pull_str += " ↑$ahead" }  # 待推送
+            if ($behind -gt 0) { $push_pull_str += " ↓$behind" } # 待拉取
+        }
     }
-    else {
-      # 如果没有关联远程分支，显示一个图标提醒
-      $push_pull_str = " !untracked"
-    }
-
     # 颜色配置: 分支(青色), 待提交(黄色), 待推送(紫色)
     $git_info = " (`e[36m$branch`e[0m`e[33m$mod_str`e[0m`e[35m$push_pull_str`e[0m)"
   }
