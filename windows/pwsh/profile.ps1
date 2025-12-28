@@ -15,38 +15,42 @@ Set-Alias -Name kg -Value kgrep
 Set-Location D:
 
 function Prompt {
-    $pattern = $env:userprofile -replace '\\', '\\'
-    $prompt_string = "$(Get-Location)" -replace $pattern, "~"
+  $pattern = [regex]::Escape($env:userprofile)
+  $prompt_string = "$(Get-Location)" -replace $pattern, "~"
 
-    $git_info = ""
-    # 检查是否在 git 仓库中
-    git rev-parse --is-inside-work-tree 2>$null | Out-Null
+  $git_info = ""
+  # 检查是否在 git 仓库
+  git rev-parse --is-inside-work-tree 2>$null | Out-Null
+  if ($?) {
+    # 1. 分支名
+    $branch = git branch --show-current --no-color
+
+    # 2. 统计待提交的文件数 (Modified/Untracked/Deleted)
+    $modifications = (git status --porcelain 2>$null | Measure-Object).Count
+    $mod_str = if ($modifications -gt 0) { " [+$modifications]" } else { "" }
+
+    # 3. 统计待推送 (Ahead) 和 待拉取 (Behind)
+    # @{u} 代表当前分支追踪的远程分支
+    $ahead_behind = git rev-list --left-right --count HEAD...@ { u } 2>$null
+    $push_pull_str = ""
     if ($?) {
-        # 1. 获取当前分支名
-        $branch = git branch --show-current --no-color
-
-        # 2. 获取改动统计 (待提交的文件数量)
-        # --short 给出的格式如 " M file.txt", 统计行数即为改动文件数
-        $modifications = (git status --porcelain 2>$null | Measure-Object).Count
-        $mod_str = if ($modifications -gt 0) { " [+$modifications]" } else { "" }
-
-        # 3. 获取与远程仓库的差异 (Unpushed/Unpulled)
-        # 格式为 "领先数    落后数"
-        $status_count = git rev-list --left-right --count HEAD...@{u} 2>$null
-        $push_pull_str = ""
-        if ($status_count -and $status_count -match "(\d+)\s+(\d+)") {
-            $ahead = $Matches[1]
-            $behind = $Matches[2]
-            if ($ahead -gt 0) { $push_pull_str += " ↑$ahead" }
-            if ($behind -gt 0) { $push_pull_str += " ↓$behind" }
-        }
-
-        # 组合 Git 信息：(分支名 [+改动数] ↑领先数)
-        $git_info = " (`e[36m$branch`e[0m`e[33m$mod_str`e[0m`e[35m$push_pull_str`e[0m)"
+      if ($ahead_behind -match "(\d+)\s+(\d+)") {
+        $ahead = $Matches[1]
+        $behind = $Matches[2]
+        if ($ahead -gt 0) { $push_pull_str += " ↑$ahead" }  # 待推送
+        if ($behind -gt 0) { $push_pull_str += " ↓$behind" } # 待拉取
+      }
+    }
+    else {
+      # 如果没有关联远程分支，显示一个图标提醒
+      $push_pull_str = " !untracked"
     }
 
-    # 输出最终的 Prompt
-    "`e[1m$prompt_string`e[0m$git_info "
+    # 颜色配置: 分支(青色), 待提交(黄色), 待推送(紫色)
+    $git_info = " (`e[36m$branch`e[0m`e[33m$mod_str`e[0m`e[35m$push_pull_str`e[0m)"
+  }
+
+  "`e[1m$prompt_string`e[0m$git_info "
 }
 
 function proxy_on {
@@ -61,7 +65,7 @@ function proxy_off {
 
 function which {
   param (
-    [Parameter(Mandatory, HelpMessage="Please provide a valid command")]
+    [Parameter(Mandatory, HelpMessage = "Please provide a valid command")]
     $command
   )
   Get-Command -Name $command | Select-Object -ExpandProperty Source
