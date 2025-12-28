@@ -39,3 +39,6 @@
 
 ; win+q -> quit current window
 #q:: WinClose("A")
+
+; win+a -> select all
+#a:: Send "^a"

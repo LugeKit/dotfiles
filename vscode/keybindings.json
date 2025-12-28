@@ -191,7 +191,8 @@
     {
         "key": "ctrl+w",
         "command": "deleteWordLeft",
-        "when": "textInputFocus && !editorReadonly"
+        "when": "textInputFocus && !editorReadonly && vim.mode == 'Insert'",
+        "isAIItem": false
     },
     {
         "key": "ctrl+j",
