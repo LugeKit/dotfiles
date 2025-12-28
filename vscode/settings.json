@@ -148,6 +148,22 @@
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": [
+                "<C-o>"
+            ],
+            "commands": [
+                "workbench.action.navigateBack"
+            ]
+        },
+        {
+            "before": [
+                "<C-i>"
+            ],
+            "commands": [
+                "workbench.action.navigateForward"
+            ]
+        },
+        {
+            "before": [
                 "leader",
                 "f",
                 "D"
