@@ -31,7 +31,7 @@ function Prompt {
 
     # 3. 统计待推送 (Ahead) 和 待拉取 (Behind)
     # @{u} 代表当前分支追踪的远程分支
-    $ahead_behind = git rev-list --left-right --count "HEAD...@ { u }" 2>$null
+    $ahead_behind = git rev-list --left-right --count "HEAD...@{u}" 2>$null
     $push_pull_str = ""
     if ($?) {
       if ($ahead_behind -match "(\d+)\s+(\d+)") {
