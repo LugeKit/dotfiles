@@ -365,7 +365,7 @@
                 "l"
             ],
             "commands": [
-                "workbench.files.action.focusFilesExplorer"
+                "workbench.files.action.showActiveFileInExplorer"
             ]
         },
         {
