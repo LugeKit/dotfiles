@@ -310,4 +310,20 @@
         "command": "-renameFile",
         "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
     },
+    {
+        "key": "ctrl+.",
+        "command": "icube.multiEditResult.tab",
+        "when": "cueInlineSuggestionVisible && editorTextFocus && inlineSuggestionHasIndentationLessThanTabSize && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || cueInlineSuggestionVisible && editorTextFocus && trae.hasInlineSuggestShouldAcceptDirect && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || editorTextFocus && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || editorTextFocus && inlineSuggestionVisible && trae.hasInlineSuggestShouldAcceptDirect && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+    },
+    {
+        "key": "tab",
+        "command": "-icube.multiEditResult.tab",
+        "when": "cueInlineSuggestionVisible && editorTextFocus && inlineSuggestionHasIndentationLessThanTabSize && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || cueInlineSuggestionVisible && editorTextFocus && trae.hasInlineSuggestShouldAcceptDirect && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || editorTextFocus && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || editorTextFocus && inlineSuggestionVisible && trae.hasInlineSuggestShouldAcceptDirect && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+    },
+    {
+        "key": "cmd+n",
+        "command": "explorer.newFile",
+        "isAIItem": false,
+        "when": "filesExplorerFocus"
+    },
 ]
