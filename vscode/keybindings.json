@@ -327,7 +327,19 @@
         "when": "filesExplorerFocus"
     },
     {
+        "key": "win+n",
+        "command": "explorer.newFile",
+        "isAIItem": false,
+        "when": "filesExplorerFocus"
+    },
+    {
         "key": "cmd+n",
+        "command": "workbench.action.icube.aiChatSidebar.createNewSession",
+        "when": "isSoloModeContext && isUserLogined || isUserLogined && !AI_CHAT_WORK_STATUS && !IsSoloModeContext && focusedView == 'workbench.panel.chat.view.ai-chat'",
+        "isAIItem": false
+    },
+    {
+        "key": "win+n",
         "command": "workbench.action.icube.aiChatSidebar.createNewSession",
         "when": "isSoloModeContext && isUserLogined || isUserLogined && !AI_CHAT_WORK_STATUS && !IsSoloModeContext && focusedView == 'workbench.panel.chat.view.ai-chat'",
         "isAIItem": false
@@ -336,5 +348,43 @@
         "key": "ctrl+cmd+n",
         "command": "-workbench.action.icube.aiChatSidebar.createNewSession",
         "when": "isSoloModeContext && isUserLogined || isUserLogined && !AI_CHAT_WORK_STATUS && !IsSoloModeContext"
+    },
+    {
+        "key": "ctrl+.",
+        "command": "editor.action.accessibleViewAcceptInlineCompletion",
+        "when": "accessibleViewIsShown && accessibleViewCurrentProviderId == 'inlineCompletions'"
+    },
+    {
+        "key": "ctrl+/",
+        "command": "-editor.action.accessibleViewAcceptInlineCompletion",
+        "when": "accessibleViewIsShown && accessibleViewCurrentProviderId == 'inlineCompletions'"
+    },
+    {
+        "key": "ctrl+.",
+        "command": "editor.action.inlineSuggest.commit",
+        "when": "editorTextFocus && inlineEditIsVisible && !editorHoverFocused && !editorTabMovesFocus || editorTextFocus && inlineEditIsVisible && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "-editor.action.inlineSuggest.commit",
+        "when": "editorTextFocus && inlineEditIsVisible && !editorHoverFocused && !editorTabMovesFocus || editorTextFocus && inlineEditIsVisible && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus"
+    },
+    {
+        "key": "win+n",
+        "command": "workbench.action.files.newUntitledFile"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "-workbench.action.files.newUntitledFile"
+    },
+    {
+        "key": "ctrl+u",
+        "command": "-workbench.action.chat.icube.open",
+        "when": "!isSoloModeContext"
+    },
+    {
+        "key": "f13",
+        "command": "workbench.action.chat.icube.open",
+        "when": "!isSoloModeContext"
     }
 ]

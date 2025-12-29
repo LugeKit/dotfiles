@@ -42,3 +42,7 @@
 
 ; win+a -> select all
 #a:: Send "^a"
+
+#HotIf WinActive("ahk_exe Trae CN.exe")
+#u:: Send "{F13}"
+#HotIf
