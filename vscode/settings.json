@@ -1,4 +1,11 @@
 {
+    "go.alternateTools": {
+        "gopls": "trae-gopls",
+        "go.lintOnSave": "off",
+    },
+    "go.toolsEnvVars": {
+        "GOMENLIMIT": "20GiB"
+    },
     "editor.fontFamily": "JetBrains Mono",
     "editor.fontSize": 14,
     "editor.fontLigatures": true,

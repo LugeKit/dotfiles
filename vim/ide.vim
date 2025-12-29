@@ -1,4 +1,5 @@
 if exists("&ide")
+    sethandler <C-.> n-v-i:vim
 	set highlightedyank
 	set clipboard+=ideaput
     nmap <C-o> <Action>(Back)
@@ -20,15 +21,12 @@ if exists("&ide")
 	nmap <leader>rn <Action>(RenameElement)
 	nmap <leader>ca <Action>(ShowIntentionActions)
 	nmap <leader>ta <Action>(CloseAllEditorsButActive)
+    nmap <leader>F <Action>(ReformatCode)
     nmap [f <Action>(EditorCodeBlockStart)
     nmap ]f <Action>(EditorCodeBlockEnd)
 	nmap <C-]> <Action>(NextTab)
 	nmap <C-[> <Action>(PreviousTab)
 	imap <C-i> <Action>(ParameterInfo)
 	imap <C-w> <Action>(EditorDeleteToWordStart)
-    imap <C-l> <Action>(InsertInlineCompletionAction)
-
-	command! GT action RunClass
-    command! FM action ReformatCode
-    command! FMF action ReformatFile
+    imap <C-.> <Action>(InsertInlineCompletionAction)
 endif
