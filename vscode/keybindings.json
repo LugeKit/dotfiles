@@ -329,11 +329,12 @@
     {
         "key": "cmd+n",
         "command": "workbench.action.icube.aiChatSidebar.createNewSession",
-        "when": "isSoloModeContext && isUserLogined || isUserLogined && !AI_CHAT_WORK_STATUS && !IsSoloModeContext"
+        "when": "isSoloModeContext && isUserLogined || isUserLogined && !AI_CHAT_WORK_STATUS && !IsSoloModeContext && focusedView == 'workbench.panel.chat.view.ai-chat'",
+        "isAIItem": false
     },
     {
         "key": "ctrl+cmd+n",
         "command": "-workbench.action.icube.aiChatSidebar.createNewSession",
         "when": "isSoloModeContext && isUserLogined || isUserLogined && !AI_CHAT_WORK_STATUS && !IsSoloModeContext"
-    },
+    }
 ]
