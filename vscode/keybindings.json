@@ -326,4 +326,14 @@
         "isAIItem": false,
         "when": "filesExplorerFocus"
     },
+    {
+        "key": "cmd+n",
+        "command": "workbench.action.icube.aiChatSidebar.createNewSession",
+        "when": "isSoloModeContext && isUserLogined || isUserLogined && !AI_CHAT_WORK_STATUS && !IsSoloModeContext"
+    },
+    {
+        "key": "ctrl+cmd+n",
+        "command": "-workbench.action.icube.aiChatSidebar.createNewSession",
+        "when": "isSoloModeContext && isUserLogined || isUserLogined && !AI_CHAT_WORK_STATUS && !IsSoloModeContext"
+    },
 ]
