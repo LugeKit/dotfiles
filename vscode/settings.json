@@ -47,6 +47,7 @@
     "remote.SSH.remotePlatform": {
         "192.168.43.129": "linux"
     },
+    "editor.stickyScroll.enabled": false,
     "vim.incsearch": true,
     "vim.useCtrlKeys": true,
     "vim.hlsearch": true,
@@ -364,7 +365,7 @@
                 "l"
             ],
             "commands": [
-                "workbench.explorer.fileView.focus"
+                "workbench.files.action.focusFilesExplorer"
             ]
         },
         {
@@ -413,7 +414,8 @@
                 "F"
             ],
             "commands": [
-                "editor.action.formatDocument"
+                "editor.action.formatDocument",
+                "editor.action.organizeImports"
             ]
         }
     ],
@@ -433,9 +435,6 @@
     "[go]": {
         "editor.insertSpaces": false,
         "editor.formatOnSave": true,
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": "explicit"
-        }
     },
     "editor.acceptSuggestionOnCommitCharacter": false,
     "editor.acceptSuggestionOnEnter": "off",
@@ -446,10 +445,14 @@
     "editor.scrollBeyondLastLine": false,
     "editor.tabCompletion": "on",
     "workbench.colorTheme": "Default Light Modern",
+    "extensions.experimental.affinity": {
+        "vscodevim.vim": 1
+    },
     "editor.tokenColorCustomizations": {
         "[Default Light Modern]": {
             "comments": "#6E7681",
             "strings": "#4CAF50"
         }
-    }
+    },
+    "explorer.autoReveal": false
 }
