@@ -379,8 +379,54 @@
         "when": "!isSoloModeContext"
     },
     {
-        "key": "f13",
+        "key": "win+shift+f13",
         "command": "workbench.action.chat.icube.open",
         "when": "!isSoloModeContext"
+    },
+    {
+        "key": "alt+up",
+        "command": "workbench.action.terminal.focusPrevious",
+        "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+    },
+    {
+        "key": "ctrl+pageup",
+        "command": "-workbench.action.terminal.focusPrevious",
+        "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+    },
+    {
+        "key": "alt+down",
+        "command": "workbench.action.terminal.focusNext",
+        "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+    },
+    {
+        "key": "ctrl+pagedown",
+        "command": "-workbench.action.terminal.focusNext",
+        "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+    },
+    {
+        "key": "win+n",
+        "command": "workbench.action.terminal.new",
+        "when": "terminalFocus && terminalProcessSupported",
+        "isAIItem": false
+    },
+    {
+        "key": "ctrl+shift+oem_3",
+        "command": "-workbench.action.terminal.new",
+        "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "-workbench.action.closeActiveEditor",
+        "when": "!isSoloModeContext || soloModeEditorTypeTagContext == 'solo_browser' || soloModeEditorTypeTagContext == 'solo_ide_app' || soloModeEditorTypeTagContext == 'solo_terminal' || soloModeTabCountContext > 0"
+    },
+    {
+        "key": "win+shift+f12",
+        "command": "workbench.action.closeActiveEditor",
+        "when": "!isSoloModeContext || soloModeEditorTypeTagContext == 'solo_browser' || soloModeEditorTypeTagContext == 'solo_ide_app' || soloModeEditorTypeTagContext == 'solo_terminal' || soloModeTabCountContext > 0"
+    },
+    {
+        "key": "win+shift+f12",
+        "command": "workbench.action.terminal.kill",
+        "when": "terminalFocus && terminalHasBeenCreated"
     }
 ]

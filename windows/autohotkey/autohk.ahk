@@ -3,7 +3,7 @@
 ; Avoid recursive call
 #UseHook true
 
-ProcessSetPriority "High"
+ProcessSetPriority "High" ; 提高脚本优先级
 SetWinDelay -1  ; 消除窗口操作导致的延迟
 
 ; # -> win
@@ -11,6 +11,9 @@ SetWinDelay -1  ; 消除窗口操作导致的延迟
 ; ! -> alt
 ; + -> shift
 ; & -> combination
+
+; 用无意义的修饰键
+A_MenuMaskKey := "vkE8"
 
 ; win+c -> copy
 #c:: Send "^{Insert}"
@@ -47,7 +50,17 @@ SetWinDelay -1  ; 消除窗口操作导致的延迟
 !z:: Send "#{3}"
 
 ; win+w -> hide current window
-#w:: WinMinimize("A")
+#w:: {
+    if WinActive("ahk_exe Trae CN.exe") {
+        ; win shift F12
+        Send "{Blind}+{F12}"
+        return
+    }
+
+    try {
+        WinMinimize("A")
+    }
+}
 
 ; win+q -> quit current window
 #q:: WinClose("A")
@@ -55,9 +68,11 @@ SetWinDelay -1  ; 消除窗口操作导致的延迟
 ; win+a -> select all
 #a:: Send "^a"
 
-#HotIf WinActive("ahk_exe Trae CN.exe")
-#u:: Send "{F13}"
-#HotIf
+; win+u -> win shift F13
+#u:: Send "{Blind}+{F13}"
+
+; win+f -> win shift F11
+#f:: Send "{Blind}+{F11}"
 
 ; 禁用原生的 CapsLock 逻辑
 SetCapsLockState "AlwaysOff"
