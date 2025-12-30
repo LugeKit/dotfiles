@@ -1,5 +1,7 @@
 ; Use new instance to rewrite the old one
 #SingleInstance Force
+; Avoid recursive call
+#UseHook true
 
 ProcessSetPriority "High"
 SetWinDelay -1  ; 消除窗口操作导致的延迟
