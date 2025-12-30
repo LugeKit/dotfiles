@@ -1,24 +1,24 @@
 -- general func
 -- send notify
-function sendNotify(content, title)
+local function sendNotify(content, title)
     if title == nil then
         title = "Hammerspoon"
     end
-    hs.notify.new({title=title, informativeText=content}):send()
+    hs.notify.new({ title = title, informativeText = content }):send()
 end
 
 local debug = false
 
-alert = function(msg)
+local function alert(msg)
     if debug then
         hs.alert.show(msg)
     end
 end
-bindKey = hs.hotkey.bind
+local bindKey = hs.hotkey.bind
 
 -- auto reload when init.lua is changed
-function reloadConfig(files)
-    doReload = true
+local function reloadConfig(files)
+    local doReload = true
     for _, file in pairs(files) do
         if file:sub(-4) == ".lua" then
             doReload = true
@@ -28,7 +28,8 @@ function reloadConfig(files)
         hs.reload()
     end
 end
-configReloadWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/dotfiles/hammerspoon/", reloadConfig)
+
+local configReloadWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/dotfiles/hammerspoon/", reloadConfig)
 configReloadWatcher:start()
 alert("hs config reloaded")
 
@@ -41,9 +42,16 @@ local operationCache = {}
 -- resize func
 function moveWindow(direction)
     local win = hs.window.focusedWindow()
-    local position
-    local id = win:id()
+    if not win then
+        return
+    end
 
+    local id = win:id()
+    if not id then
+        return
+    end
+
+    local position
     if frameCache[id] then
         if operationCache[id] == direction then
             win:setFrame(frameCache[id])
@@ -59,37 +67,37 @@ function moveWindow(direction)
     end
 
     if direction == "left" then
-        position = {0, 0, 0.5, 1}
+        position = { 0, 0, 0.5, 1 }
     elseif direction == "right" then
-        position = {0.5, 0, 0.5, 1}
+        position = { 0.5, 0, 0.5, 1 }
     elseif direction == "up" then
-        position = {0, 0, 1, 0.5}
+        position = { 0, 0, 1, 0.5 }
     elseif direction == "down" then
-        position = {0, 0.5, 1, 0.5}
+        position = { 0, 0.5, 1, 0.5 }
     elseif direction == "up_left" then
-        position = {0, 0, 0.5, 0.5}
+        position = { 0, 0, 0.5, 0.5 }
     elseif direction == "up_right" then
-        position = {0.5, 0, 0.5, 0.5}
+        position = { 0.5, 0, 0.5, 0.5 }
     elseif direction == "down_left" then
-        position = {0, 0.5, 0.5, 0.5}
+        position = { 0, 0.5, 0.5, 0.5 }
     elseif direction == "down_right" then
-        position = {0.5, 0.5, 0.5, 0.5}
+        position = { 0.5, 0.5, 0.5, 0.5 }
     elseif direction == "max" then
-        position = {0, 0, 1, 1}
+        position = { 0, 0, 1, 1 }
     end
 
     win:move(position)
 end
 
-bindKey({"ctrl", "shift"}, "Left", hs.fnutils.partial(moveWindow, "left"))
-bindKey({"ctrl", "shift"}, "Right", hs.fnutils.partial(moveWindow, "right"))
-bindKey({"ctrl", "shift"}, "Up", hs.fnutils.partial(moveWindow, "up"))
-bindKey({"ctrl", "shift"}, "Down", hs.fnutils.partial(moveWindow, "down"))
-bindKey({"ctrl", "shift"}, "[", hs.fnutils.partial(moveWindow, "up_left"))
-bindKey({"ctrl", "shift"}, "]", hs.fnutils.partial(moveWindow, "up_right"))
-bindKey({"ctrl", "shift"}, ";", hs.fnutils.partial(moveWindow, "down_left"))
-bindKey({"ctrl", "shift"}, "'", hs.fnutils.partial(moveWindow, "down_right"))
-bindKey({"ctrl", "shift"}, "\\", hs.fnutils.partial(moveWindow, "max"))
+bindKey({ "ctrl", "shift" }, "Left", hs.fnutils.partial(moveWindow, "left"))
+bindKey({ "ctrl", "shift" }, "Right", hs.fnutils.partial(moveWindow, "right"))
+bindKey({ "ctrl", "shift" }, "Up", hs.fnutils.partial(moveWindow, "up"))
+bindKey({ "ctrl", "shift" }, "Down", hs.fnutils.partial(moveWindow, "down"))
+bindKey({ "ctrl", "shift" }, "[", hs.fnutils.partial(moveWindow, "up_left"))
+bindKey({ "ctrl", "shift" }, "]", hs.fnutils.partial(moveWindow, "up_right"))
+bindKey({ "ctrl", "shift" }, ";", hs.fnutils.partial(moveWindow, "down_left"))
+bindKey({ "ctrl", "shift" }, "'", hs.fnutils.partial(moveWindow, "down_right"))
+bindKey({ "ctrl", "shift" }, "\\", hs.fnutils.partial(moveWindow, "max"))
 
 -- auto change input method
 local appLanguage = {
@@ -101,8 +109,12 @@ local languageIM = {
     ["Chinese"] = "com.sogou.inputmethod.sogou.pinyin"
 }
 
-dismissLarkHotkey = hs.hotkey.new({"cmd"}, "w", function()
+dismissLarkHotkey = hs.hotkey.new({ "cmd" }, "w", function()
     local app = hs.window.focusedWindow():application()
+    if not app then
+        return
+    end
+
     app:hide()
 end)
 
@@ -120,7 +132,7 @@ end
 
 local lastApp1 = nil
 local lastApp2 = nil
-bindKey({"alt"}, "`", function()
+bindKey({ "alt" }, "`", function()
     if lastApp2 ~= nil then
         if lastApp2 == "飞书" then
             lastApp2 = "Lark"
@@ -156,7 +168,7 @@ end)
 appWatcher:start()
 
 -- terminal
-bindKey({"option"}, "z", function()
+bindKey({ "option" }, "z", function()
     local term = hs.application.get("Ghostty")
     if term and term:isFrontmost() then
         term:hide()
@@ -166,9 +178,11 @@ bindKey({"option"}, "z", function()
 end)
 
 -- test
-bindKey({"cmd", "ctrl"}, "t", function()
+bindKey({ "cmd", "ctrl" }, "t", function()
     local app = hs.window.focusedWindow():application():name()
     alert(app)
     alert(hs.keycodes.currentSourceID())
 end)
 
+
+hs.loadSpoon('EmmyLua')

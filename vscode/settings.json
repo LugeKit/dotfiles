@@ -455,5 +455,8 @@
         }
     },
     "explorer.autoReveal": false,
-    "terminal.integrated.shellIntegration.decorationsEnabled": "never"
+    "terminal.integrated.shellIntegration.decorationsEnabled": "never",
+    "Lua.workspace.library": [
+        "/Users/bytedance/.hammerspoon/Spoons/EmmyLua.spoon/annotations"
+    ]
 }
