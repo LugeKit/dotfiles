@@ -431,6 +431,11 @@
     },
     {
         "key": "win+ctrl+shift+w",
+        "command": "workbench.action.closeActiveEditor",
+        "when": "focusedView != 'workbench.panel.chat.view.ai-chat' && !filesExplorerFocus && !terminalFocus"
+    },
+    {
+        "key": "win+ctrl+shift+w",
         "command": "workbench.action.chat.icube.open",
         "when": "focusedView == 'workbench.panel.chat.view.ai-chat'"
     },
