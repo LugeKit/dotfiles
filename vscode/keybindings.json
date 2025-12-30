@@ -370,10 +370,6 @@
         "when": "editorTextFocus && inlineEditIsVisible && !editorHoverFocused && !editorTabMovesFocus || editorTextFocus && inlineEditIsVisible && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus"
     },
     {
-        "key": "win+n",
-        "command": "workbench.action.files.newUntitledFile"
-    },
-    {
         "key": "ctrl+n",
         "command": "-workbench.action.files.newUntitledFile"
     },
