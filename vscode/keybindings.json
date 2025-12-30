@@ -379,7 +379,7 @@
         "when": "!isSoloModeContext"
     },
     {
-        "key": "win+shift+f13",
+        "key": "win+shift+ctrl+u",
         "command": "workbench.action.chat.icube.open",
         "when": "!isSoloModeContext"
     },
@@ -420,12 +420,12 @@
         "when": "!isSoloModeContext || soloModeEditorTypeTagContext == 'solo_browser' || soloModeEditorTypeTagContext == 'solo_ide_app' || soloModeEditorTypeTagContext == 'solo_terminal' || soloModeTabCountContext > 0"
     },
     {
-        "key": "win+shift+f12",
+        "key": "win+ctrl+shift+w",
         "command": "workbench.action.closeActiveEditor",
         "when": "!isSoloModeContext || soloModeEditorTypeTagContext == 'solo_browser' || soloModeEditorTypeTagContext == 'solo_ide_app' || soloModeEditorTypeTagContext == 'solo_terminal' || soloModeTabCountContext > 0"
     },
     {
-        "key": "win+shift+f12",
+        "key": "win+shift+ctrl+w",
         "command": "workbench.action.terminal.kill",
         "when": "terminalFocus && terminalHasBeenCreated"
     },

@@ -52,8 +52,8 @@ A_MenuMaskKey := "vkE8"
 ; win+w -> hide current window
 #w:: {
     if WinActive("ahk_exe Trae CN.exe") {
-        ; win shift F12
-        Send "{Blind}+{F12}"
+        ; win shift ctrl w
+        Send "{Blind}+^w"
         return
     }
 
@@ -68,11 +68,11 @@ A_MenuMaskKey := "vkE8"
 ; win+a -> select all
 #a:: Send "^a"
 
-; win+u -> win shift F13
-#u:: Send "{Blind}+{F13}"
+; win+u -> win ctrl shift F13
+#u:: Send "{Blind}+^u"
 
-; win+f -> win shift F11
-#f:: Send "{Blind}+{F11}"
+; win+f -> win ctrl shift F11
+#f:: Send "{Blind}+^f"
 
 ; 禁用原生的 CapsLock 逻辑
 SetCapsLockState "AlwaysOff"

@@ -488,5 +488,6 @@
     "Lua.workspace.library": [
         "/Users/bytedance/.hammerspoon/Spoons/EmmyLua.spoon/annotations"
     ],
-    "codeReview.autoJumpToNextChange": true
+    "codeReview.autoJumpToNextChange": true,
+    "AI.toolcall.v2.command.allowList": "[\"git status\",\"cd\",\"ls\",\"grep\",\"git commit\",\"git add\",\"git log\",\"cat\",\"head\",\"tail\",\"git diff\"]"
 }
