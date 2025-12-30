@@ -22,7 +22,14 @@ SetWinDelay -1  ; 消除窗口操作导致的延迟
 #x:: Send "+{Delete}"
 
 ; win+backspace -> delete to start of line
-#Backspace:: Send "+{Home}{Backspace}"
+#Backspace::
+{
+    Send "+{Home}"
+    ; some input can not handle it so quickly
+    ; eg, Trae AI Input
+    Sleep 20
+    Send "{Backspace}"
+}
 
 ; win+left -> Home
 #Left:: Send "{Home}"
