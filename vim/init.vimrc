@@ -46,7 +46,7 @@ let &t_EI.="\e[1 q"
 source ~/dotfiles/vim/windows.vim
 source ~/dotfiles/vim/func.vim
 source ~/dotfiles/vim/parentheses.vim
-
+source ~/dotfiles/vim/ide.vim
 
 " Key mappings {{{
 " Normal mappings
@@ -87,5 +87,3 @@ augroup filetype_vim
 	autocmd FileType vim setlocal foldmethod=marker
 augroup end
 " }}}
-
-source ~/dotfiles/vim/ide.vim

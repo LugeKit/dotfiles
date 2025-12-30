@@ -381,6 +381,36 @@
         {
             "before": [
                 "leader",
+                "g",
+                "n"
+            ],
+            "commands": [
+                "editor.action.dirtydiff.next"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "g",
+                "N"
+            ],
+            "commands": [
+                "editor.action.dirtydiff.previous"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "g",
+                "u"
+            ],
+            "commands": [
+                "git.revertSelectedChanges"
+            ]
+        },
+        {
+            "before": [
+                "leader",
                 "f",
                 "f"
             ],
