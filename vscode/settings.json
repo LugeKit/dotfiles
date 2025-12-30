@@ -405,7 +405,7 @@
                 "u"
             ],
             "commands": [
-                "git.revertSelectedChanges"
+                "git.revertSelectedRanges"
             ]
         },
         {
