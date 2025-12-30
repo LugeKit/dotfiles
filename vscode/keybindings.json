@@ -21,6 +21,11 @@
         "when": "sideBarFocus"
     },
     {
+        "key": "win+ctrl+shift+w",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "sideBarFocus"
+    },
+    {
         "key": "f1",
         "command": "-workbench.action.showCommands"
     },
@@ -327,7 +332,7 @@
         "when": "filesExplorerFocus"
     },
     {
-        "key": "win+n",
+        "key": "win+ctrl+shift+n",
         "command": "explorer.newFile",
         "isAIItem": false,
         "when": "filesExplorerFocus"
@@ -379,7 +384,7 @@
         "when": "!isSoloModeContext"
     },
     {
-        "key": "win+shift+ctrl+u",
+        "key": "win+ctrl+shift+u",
         "command": "workbench.action.chat.icube.open",
         "when": "!isSoloModeContext"
     },
@@ -422,10 +427,15 @@
     {
         "key": "win+ctrl+shift+w",
         "command": "workbench.action.closeActiveEditor",
-        "when": "!isSoloModeContext || soloModeEditorTypeTagContext == 'solo_browser' || soloModeEditorTypeTagContext == 'solo_ide_app' || soloModeEditorTypeTagContext == 'solo_terminal' || soloModeTabCountContext > 0"
+        "when": "editorFocus && !activeEditorGroupEmpty"
     },
     {
-        "key": "win+shift+ctrl+w",
+        "key": "win+ctrl+shift+w",
+        "command": "workbench.action.chat.icube.open",
+        "when": "focusedView == 'workbench.panel.chat.view.ai-chat'"
+    },
+    {
+        "key": "win+ctrl+shift+w",
         "command": "workbench.action.terminal.kill",
         "when": "terminalFocus && terminalHasBeenCreated"
     },
