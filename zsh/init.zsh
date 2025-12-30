@@ -3,8 +3,8 @@ source ~/dotfiles/zsh/prompt.zsh
 source ~/dotfiles/zsh/completions.zsh
 
 # should be placed after vim
-source ~/dotfiles/zsh/zsh-autopair/autopair.zsh
-autopair-init
+# source ~/dotfiles/zsh/zsh-autopair/autopair.zsh
+# autopair-init
 
 # shortcuts
 alias ll='ls -l --color'

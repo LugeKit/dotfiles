@@ -433,5 +433,15 @@
         "key": "cmd+w",
         "command": "workbench.action.terminal.kill",
         "when": "terminalFocus && terminalHasBeenCreated"
+    },
+    {
+        "key": "escape",
+        "command": "extension.vim_escape",
+        "when": "editorTextFocus && vim.active && !inDebugRepl && !markersNavigationVisible"
+    },
+    {
+        "key": "escape",
+        "command": "-extension.vim_escape",
+        "when": "editorTextFocus && vim.active && !inDebugRepl"
     }
 ]
