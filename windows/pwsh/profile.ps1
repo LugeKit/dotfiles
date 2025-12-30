@@ -12,7 +12,6 @@ if (Test-Path($ChocolateyProfile)) {
 
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 Set-Alias -Name kg -Value kgrep
-Set-Location D:
 
 function Prompt {
   $pattern = [regex]::Escape($env:userprofile)
@@ -33,13 +32,13 @@ function Prompt {
     # @{u} 代表当前分支追踪的远程分支
     $ahead_behind = git rev-list --left-right --count "HEAD...@{u}" 2>$null
     if ($?) {
-        $push_pull_str = ""
-        if ($ahead_behind -match "(\d+)\s+(\d+)") {
-            $ahead = $Matches[1]
-            $behind = $Matches[2]
-            if ($ahead -gt 0) { $push_pull_str += " ↑$ahead" }  # 待推送
-            if ($behind -gt 0) { $push_pull_str += " ↓$behind" } # 待拉取
-        }
+      $push_pull_str = ""
+      if ($ahead_behind -match "(\d+)\s+(\d+)") {
+        $ahead = $Matches[1]
+        $behind = $Matches[2]
+        if ($ahead -gt 0) { $push_pull_str += " ↑$ahead" }  # 待推送
+        if ($behind -gt 0) { $push_pull_str += " ↓$behind" } # 待拉取
+      }
     }
     # 颜色配置: 分支(青色), 待提交(黄色), 待推送(紫色)
     $git_info = " (`e[36m$branch`e[0m`e[33m$mod_str`e[0m`e[35m$push_pull_str`e[0m)"
