@@ -1,7 +1,7 @@
 {
     "go.alternateTools": {
         "gopls": "trae-gopls",
-        "go.lintOnSave": "off",
+        "go.lintOnSave": "off"
     },
     "go.toolsEnvVars": {
         "GOMENLIMIT": "20GiB"
@@ -70,7 +70,7 @@
             ],
             "commands": [
                 "selectPrevSuggestion"
-            ],
+            ]
         },
         {
             "before": [
@@ -78,7 +78,7 @@
             ],
             "commands": [
                 "editor.action.triggerParameterHints"
-            ],
+            ]
         },
         {
             "before": [
@@ -86,8 +86,8 @@
             ],
             "commands": [
                 "closeParameterHints"
-            ],
-        },
+            ]
+        }
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
         {
@@ -396,7 +396,7 @@
             ],
             "commands": [
                 "editor.action.rename"
-            ],
+            ]
         },
         {
             "before": [
@@ -406,7 +406,7 @@
             ],
             "commands": [
                 "editor.action.quickFix"
-            ],
+            ]
         },
         {
             "before": [
@@ -434,7 +434,7 @@
     "editor.inlayHints.enabled": "off",
     "[go]": {
         "editor.insertSpaces": false,
-        "editor.formatOnSave": true,
+        "editor.formatOnSave": true
     },
     "editor.acceptSuggestionOnCommitCharacter": false,
     "editor.acceptSuggestionOnEnter": "off",

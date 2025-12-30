@@ -10,7 +10,7 @@
         "args": {
             "commands": [
                 "workbench.action.toggleSidebarVisibility",
-                "workbench.action.focusSideBar",
+                "workbench.action.focusSideBar"
             ]
         },
         "when": "!sideBarFocus"
