@@ -62,6 +62,9 @@ A_MenuMaskKey := "vkE8"
     }
 }
 
+; win+t -> win ctrl shift t
+#t:: Send "{Blind}+^t"
+
 ; win+q -> quit current window
 #q:: WinClose("A")
 

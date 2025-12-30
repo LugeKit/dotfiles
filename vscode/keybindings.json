@@ -339,7 +339,7 @@
         "isAIItem": false
     },
     {
-        "key": "win+n",
+        "key": "win+ctrl+shift+t",
         "command": "workbench.action.icube.aiChatSidebar.createNewSession",
         "when": "(isSoloModeContext && isUserLogined || isUserLogined && !AI_CHAT_WORK_STATUS && !IsSoloModeContext) && focusedView == 'workbench.panel.chat.view.ai-chat'",
         "isAIItem": false
@@ -404,7 +404,7 @@
         "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
     },
     {
-        "key": "win+n",
+        "key": "win+ctrl+shift+t",
         "command": "workbench.action.terminal.new",
         "when": "terminalFocus && terminalProcessSupported",
         "isAIItem": false
