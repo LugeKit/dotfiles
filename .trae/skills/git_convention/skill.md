@@ -40,3 +40,7 @@ git commit -m "feat: add new feature for display control
 
 - When the user asks to commit changes.
 - When generating a commit message for a pull request or commit.
+
+## Constraints
+
+- **DO NOT** execute `git push` automatically after committing. Wait for explicit user instruction to push.
