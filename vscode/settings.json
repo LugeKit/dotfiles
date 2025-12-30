@@ -430,7 +430,7 @@
     "editor.unicodeHighlight.nonBasicASCII": false,
     "git.openRepositoryInParentFolders": "never",
     "workbench.settings.applyToAllProfiles": [],
-    "AI.toolcall.v2.command.allowList": "[\"npm\",\"cd\",\"ls\",\"cat\",\"grep\",\"find\",\"head\",\"tail\"]",
+    "AI.toolcall.v2.command.allowList": "[\"npm\",\"cd\",\"ls\",\"cat\",\"grep\",\"find\",\"head\",\"tail\",\"git status\",\"git diff\",\"git log\"]",
     "editor.inlayHints.enabled": "off",
     "[go]": {
         "editor.insertSpaces": false,

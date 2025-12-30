@@ -1,14 +1,7 @@
--- general func
--- send notify
-local function sendNotify(content, title)
-    if title == nil then
-        title = "Hammerspoon"
-    end
-    hs.notify.new({ title = title, informativeText = content }):send()
-end
-
+--------------------------------- general functions ---------------------------------
 local debug = false
 
+-- show alert when debug is enabled
 local function alert(msg)
     if debug then
         hs.alert.show(msg)
@@ -29,18 +22,35 @@ local function reloadConfig(files)
     end
 end
 
+-- change IM helper
+local languageIM = {
+    ["English"] = "com.apple.keylayout.ABC",
+    ["Chinese"] = "com.sogou.inputmethod.sogou.pinyin"
+}
+local function changeIM(language)
+    local currentSourceID = hs.keycodes.currentSourceID()
+    local expectedSourceID = languageIM[language]
+    if not expectedSourceID then
+        alert(expectedSourceID .. " is not found in IM map")
+    end
+
+    if currentSourceID ~= expectedSourceID then
+        hs.keycodes.currentSourceID(expectedSourceID)
+    end
+end
+
 local configReloadWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/dotfiles/hammerspoon/", reloadConfig)
 configReloadWatcher:start()
 alert("hs config reloaded")
 
 
--- resize window
+--------------------------------- window resize functions ---------------------------------
 -- local variables
 local frameCache = {}
 local operationCache = {}
 
 -- resize func
-function moveWindow(direction)
+local function moveWindow(direction)
     local win = hs.window.focusedWindow()
     if not win then
         return
@@ -99,75 +109,22 @@ bindKey({ "ctrl", "shift" }, ";", hs.fnutils.partial(moveWindow, "down_left"))
 bindKey({ "ctrl", "shift" }, "'", hs.fnutils.partial(moveWindow, "down_right"))
 bindKey({ "ctrl", "shift" }, "\\", hs.fnutils.partial(moveWindow, "max"))
 
--- auto change input method
+--------------------------------- input method functions ---------------------------------
 local appLanguage = {
     ["飞书"] = "Chinese",
 }
 
-local languageIM = {
-    ["English"] = "com.apple.keylayout.ABC",
-    ["Chinese"] = "com.sogou.inputmethod.sogou.pinyin"
-}
-
-dismissLarkHotkey = hs.hotkey.new({ "cmd" }, "w", function()
-    local app = hs.window.focusedWindow():application()
-    if not app then
-        return
-    end
-
-    app:hide()
-end)
-
-local function changeIM(language)
-    local currentSourceID = hs.keycodes.currentSourceID()
-    local expectedSourceID = languageIM[language]
-    if not expectedSourceID then
-        alert(expectedSourceID .. " is not found in IM map")
-    end
-
-    if currentSourceID ~= expectedSourceID then
-        hs.keycodes.currentSourceID(expectedSourceID)
-    end
-end
-
-local lastApp1 = nil
-local lastApp2 = nil
-bindKey({ "alt" }, "`", function()
-    if lastApp2 ~= nil then
-        if lastApp2 == "飞书" then
-            lastApp2 = "Lark"
-        end
-        hs.application.launchOrFocus(lastApp2)
-    end
-end)
-
-
-function onAppChange(appName)
+local function imChangeForAppChange(appName)
     alert("current app is: " .. appName)
-    -- lark will not lose focus when cmd+w close it window
-    -- so force it to hide
-    if appName == "飞书" then
-        dismissLarkHotkey:enable()
-    else
-        dismissLarkHotkey:disable()
-    end
 
     -- if language is not set spcifically, set it to ABC
     local language = appLanguage[appName] or "English"
     changeIM(language)
-
-    lastApp2 = lastApp1
-    lastApp1 = appName
 end
 
-appWatcher = hs.application.watcher.new(function(appName, eventType, appObject)
-    if (eventType == hs.application.watcher.activated) then
-        onAppChange(appName)
-    end
-end)
-appWatcher:start()
 
--- terminal
+--------------------------------- hotkey ---------------------------------
+--- hotkey for Ghostty
 bindKey({ "option" }, "z", function()
     local term = hs.application.get("Ghostty")
     if term and term:isFrontmost() then
@@ -177,7 +134,38 @@ bindKey({ "option" }, "z", function()
     hs.application.launchOrFocus("Ghostty")
 end)
 
--- test
+-- hotkey for dismiss Lark
+local dismissLarkHotkey = hs.hotkey.new({ "cmd" }, "w", function()
+    local app = hs.window.focusedWindow():application()
+    if not app then
+        return
+    end
+
+    app:hide()
+end)
+
+local function hotkeyChangeForLark(appName)
+    alert("current app is: " .. appName)
+    -- lark will not lose focus when cmd+w close it window
+    -- so force it to hide
+    if appName == "飞书" then
+        dismissLarkHotkey:enable()
+    else
+        dismissLarkHotkey:disable()
+    end
+end
+
+
+------------------- app change listener -------------------
+local appWatcher = hs.application.watcher.new(function(appName, eventType, appObject)
+    if (eventType == hs.application.watcher.activated) then
+        imChangeForAppChange(appName)
+        hotkeyChangeForLark(appName)
+    end
+end)
+appWatcher:start()
+
+--------------------------------- debug ---------------------------------
 bindKey({ "cmd", "ctrl" }, "t", function()
     local app = hs.window.focusedWindow():application():name()
     alert(app)
