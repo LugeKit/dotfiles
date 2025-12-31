@@ -489,7 +489,5 @@
     ],
     "codeReview.autoJumpToNextChange": true,
     "AI.toolcall.v2.command.allowList": "[\"git status\",\"cd\",\"ls\",\"grep\",\"git add\",\"git log\",\"cat\",\"head\",\"tail\",\"git diff\"]",
-    "python.analysis.typeCheckingMode": "standard",
-    "trae.tab.enableAutoRename": false,
-    "trae.tab.enableAutoImport": false
+    "python.analysis.typeCheckingMode": "standard"
 }
