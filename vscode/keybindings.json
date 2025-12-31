@@ -338,9 +338,9 @@
         "when": "filesExplorerFocus"
     },
     {
-        "key": "cmd+n",
+        "key": "cmd+t",
         "command": "workbench.action.icube.aiChatSidebar.createNewSession",
-        "when": "(isSoloModeContext && isUserLogined || isUserLogined && !AI_CHAT_WORK_STATUS && !IsSoloModeContext) && focusedView == 'workbench.panel.chat.view.ai-chat'",
+        "when": "isSoloModeContext && isUserLogined && focusedView == 'workbench.panel.chat.view.ai-chat' || isUserLogined && !AI_CHAT_WORK_STATUS && !IsSoloModeContext && focusedView == 'workbench.panel.chat.view.ai-chat'",
         "isAIItem": false
     },
     {
@@ -415,6 +415,12 @@
         "isAIItem": false
     },
     {
+        "key": "cmd+t",
+        "command": "workbench.action.terminal.new",
+        "when": "terminalFocus && terminalProcessSupported",
+        "isAIItem": false
+    },
+    {
         "key": "ctrl+shift+oem_3",
         "command": "-workbench.action.terminal.new",
         "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
@@ -464,5 +470,15 @@
         "key": "cmd+u",
         "command": "-cursorUndo",
         "when": "textInputFocus"
+    },
+    {
+        "key": "cmd+t",
+        "command": "workbench.action.chat.newChat",
+        "when": "chatIsEnabled && inChat"
+    },
+    {
+        "key": "cmd+n",
+        "command": "-workbench.action.chat.newChat",
+        "when": "chatIsEnabled && inChat"
     }
 ]
