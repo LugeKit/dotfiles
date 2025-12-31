@@ -467,10 +467,9 @@
     },
     "editor.acceptSuggestionOnCommitCharacter": false,
     "editor.acceptSuggestionOnEnter": "off",
-    "editor.cursorBlinking": "solid",
     "editor.renderWhitespace": "none",
     "editor.largeFileOptimizations": true,
-    "editor.smoothScrolling": false,
+    "editor.smoothScrolling": true,
     "editor.scrollBeyondLastLine": false,
     "editor.tabCompletion": "on",
     "workbench.colorTheme": "Default Light Modern",
@@ -489,5 +488,8 @@
         "/Users/bytedance/.hammerspoon/Spoons/EmmyLua.spoon/annotations"
     ],
     "codeReview.autoJumpToNextChange": true,
-    "AI.toolcall.v2.command.allowList": "[\"git status\",\"cd\",\"ls\",\"grep\",\"git add\",\"git log\",\"cat\",\"head\",\"tail\",\"git diff\"]"
+    "AI.toolcall.v2.command.allowList": "[\"git status\",\"cd\",\"ls\",\"grep\",\"git add\",\"git log\",\"cat\",\"head\",\"tail\",\"git diff\"]",
+    "python.analysis.typeCheckingMode": "standard",
+    "trae.tab.enableAutoRename": false,
+    "trae.tab.enableAutoImport": false
 }
