@@ -5,22 +5,6 @@
         "when": "filesExplorerFocus && !inputFocus"
     },
     {
-        "key": "ctrl+b",
-        "command": "runCommands",
-        "args": {
-            "commands": [
-                "workbench.action.toggleSidebarVisibility",
-                "workbench.action.focusSideBar"
-            ]
-        },
-        "when": "!sideBarFocus"
-    },
-    {
-        "key": "ctrl+b",
-        "command": "workbench.action.toggleSidebarVisibility",
-        "when": "sideBarFocus"
-    },
-    {
         "key": "win+ctrl+shift+w",
         "command": "workbench.action.toggleSidebarVisibility",
         "when": "sideBarFocus"
@@ -480,5 +464,36 @@
         "key": "cmd+n",
         "command": "-workbench.action.chat.newChat",
         "when": "chatIsEnabled && inChat"
+    },
+    {
+        "key": "ctrl+shift+win+p",
+        "command": "workbench.action.quickOpen"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "-workbench.action.quickOpen"
+    },
+    {
+        "key": "shift+alt+win+b",
+        "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "-workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "ctrl+f",
+        "command": "-actions.find",
+        "when": "editorFocus || editorIsOpen && !icubeLiteMode"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "-editor.action.startFindReplaceAction",
+        "when": "editorFocus || editorIsOpen"
+    },
+    {
+        "key": "win+ctrl+shift+f",
+        "command": "editor.action.startFindReplaceAction",
+        "when": "editorFocus || editorIsOpen"
     }
 ]

@@ -77,6 +77,13 @@ A_MenuMaskKey := "vkE8"
 ; win+f -> win ctrl shift F11
 #f:: Send "{Blind}+^f"
 
+; win+b -> win ctrl alt b
+; win+ctrl+shift+b redraw the whole screen
+#b:: Send "{Blind}+!b"
+
+; win+p -> win ctrl shift p
+#p:: Send "{Blind}+^p"
+
 ; 禁用原生的 CapsLock 逻辑
 SetCapsLockState "AlwaysOff"
 
