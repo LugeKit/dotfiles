@@ -5,7 +5,7 @@
         "when": "filesExplorerFocus && !inputFocus"
     },
     {
-        "key": "win+ctrl+shift+w",
+        "key": "win+ctrl+alt+w",
         "command": "workbench.action.toggleSidebarVisibility",
         "when": "sideBarFocus"
     },
@@ -230,9 +230,10 @@
         "when": "editorTextFocus && inputFocus && notebookEditorFocused && vim.mode == 'Normal' && notebookEditorCursorAtBoundary != 'bottom' && notebookEditorCursorAtBoundary != 'none'"
     },
     {
-        "key": "ctrl+,",
+        "key": "ctrl+oem_period",
         "command": "editor.action.inlineSuggest.commit",
-        "when": "inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+        "when": "inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible",
+        "isAIItem": false
     },
     {
         "key": "tab",
@@ -316,7 +317,7 @@
         "when": "filesExplorerFocus"
     },
     {
-        "key": "win+ctrl+shift+n",
+        "key": "win+ctrl+alt+n",
         "command": "explorer.newFile",
         "isAIItem": false,
         "when": "filesExplorerFocus"
@@ -328,7 +329,7 @@
         "isAIItem": false
     },
     {
-        "key": "win+ctrl+shift+t",
+        "key": "win+ctrl+alt+t",
         "command": "workbench.action.icube.aiChatSidebar.createNewSession",
         "when": "(isSoloModeContext && isUserLogined || isUserLogined && !AI_CHAT_WORK_STATUS && !IsSoloModeContext) && focusedView == 'workbench.panel.chat.view.ai-chat'",
         "isAIItem": false
@@ -368,7 +369,7 @@
         "when": "!isSoloModeContext"
     },
     {
-        "key": "win+ctrl+shift+u",
+        "key": "win+ctrl+alt+u",
         "command": "workbench.action.chat.icube.open",
         "when": "!isSoloModeContext"
     },
@@ -393,7 +394,7 @@
         "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
     },
     {
-        "key": "win+ctrl+shift+t",
+        "key": "win+ctrl+alt+t",
         "command": "workbench.action.terminal.new",
         "when": "terminalFocus && terminalProcessSupported",
         "isAIItem": false
@@ -415,22 +416,22 @@
         "when": "!isSoloModeContext || soloModeEditorTypeTagContext == 'solo_browser' || soloModeEditorTypeTagContext == 'solo_ide_app' || soloModeEditorTypeTagContext == 'solo_terminal' || soloModeTabCountContext > 0"
     },
     {
-        "key": "win+ctrl+shift+w",
+        "key": "win+ctrl+alt+w",
         "command": "workbench.action.closeActiveEditor",
         "when": "editorFocus && !activeEditorGroupEmpty"
     },
     {
-        "key": "win+ctrl+shift+w",
+        "key": "win+ctrl+alt+w",
         "command": "workbench.action.closeActiveEditor",
         "when": "focusedView != 'workbench.panel.chat.view.ai-chat' && !filesExplorerFocus && !terminalFocus"
     },
     {
-        "key": "win+ctrl+shift+w",
+        "key": "win+ctrl+alt+w",
         "command": "workbench.action.chat.icube.open",
         "when": "focusedView == 'workbench.panel.chat.view.ai-chat'"
     },
     {
-        "key": "win+ctrl+shift+w",
+        "key": "win+ctrl+alt+w",
         "command": "workbench.action.terminal.kill",
         "when": "terminalFocus && terminalHasBeenCreated"
     },
@@ -466,7 +467,7 @@
         "when": "chatIsEnabled && inChat"
     },
     {
-        "key": "ctrl+shift+win+p",
+        "key": "win+ctrl+alt+p",
         "command": "workbench.action.quickOpen"
     },
     {
@@ -474,7 +475,7 @@
         "command": "-workbench.action.quickOpen"
     },
     {
-        "key": "shift+alt+win+b",
+        "key": "win+ctrl+alt+b",
         "command": "workbench.action.toggleSidebarVisibility"
     },
     {
@@ -492,8 +493,16 @@
         "when": "editorFocus || editorIsOpen"
     },
     {
-        "key": "win+ctrl+shift+f",
+        "key": "win+ctrl+alt+f",
         "command": "editor.action.startFindReplaceAction",
         "when": "editorFocus || editorIsOpen"
+    },
+    {
+        "key": "win+oem_comma",
+        "command": "workbench.action.icube.openSettings"
+    },
+    {
+        "key": "ctrl+oem_comma",
+        "command": "-workbench.action.icube.openSettings"
     }
 ]

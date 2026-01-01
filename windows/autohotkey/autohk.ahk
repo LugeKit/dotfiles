@@ -46,14 +46,17 @@ A_MenuMaskKey := "vkE8"
 ; win+shift+right -> shift End
 #+Right:: Send "+{End}"
 
-; alt+z -> win+3
-!z:: Send "#{3}"
+; win+a -> select all
+#a:: Send "^a"
+
+; win+q -> quit current window
+#q:: WinClose("A")
 
 ; win+w -> hide current window
 #w:: {
     if WinActive("ahk_exe Trae CN.exe") {
-        ; win shift ctrl w
-        Send "{Blind}+^w"
+        ; win ctrl alt w
+        Send "{Blind}^!w"
         return
     }
 
@@ -62,27 +65,24 @@ A_MenuMaskKey := "vkE8"
     }
 }
 
-; win+t -> win ctrl shift t
-#t:: Send "{Blind}+^t"
+; alt+z -> win+3
+!z:: Send "#{3}"
 
-; win+q -> quit current window
-#q:: WinClose("A")
+; win+t -> win ctrl alt t
+#t:: Send "{Blind}^!t"
 
-; win+a -> select all
-#a:: Send "^a"
+; win+u -> win ctrl shift u
+#u:: Send "{Blind}^!u"
 
-; win+u -> win ctrl shift F13
-#u:: Send "{Blind}+^u"
-
-; win+f -> win ctrl shift F11
-#f:: Send "{Blind}+^f"
+; win+f -> win ctrl alt f
+#f:: Send "{Blind}^!f"
 
 ; win+b -> win ctrl alt b
-; win+ctrl+shift+b redraw the whole screen
-#b:: Send "{Blind}+!b"
+; NOTE: win+ctrl+shift+b redraw the whole screen
+#b:: Send "{Blind}^!b"
 
-; win+p -> win ctrl shift p
-#p:: Send "{Blind}+^p"
+; win+p -> win ctrl alt p
+#p:: Send "{Blind}^!p"
 
 ; 禁用原生的 CapsLock 逻辑
 SetCapsLockState "AlwaysOff"
