@@ -8,7 +8,7 @@
     },
     "editor.fontFamily": "JetBrains Mono",
     "editor.fontSize": 14,
-    "editor.fontLigatures": true,
+    "editor.fontLigatures": false,
     "explorer.confirmDelete": false,
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter-notebook"
