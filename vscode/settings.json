@@ -485,24 +485,20 @@
             "variables": "#000000",
             "textMateRules": [
                 {
-                    "scope": "entity.name.namespace",
-                    "settings": {
-                        "foreground": "#B34700"
-                    }
-                },
-                {
                     "scope": "support.type.property-name.json",
                     "settings": {
                         "foreground": "#0366D6"
                     }
-                },
-                {
-                    "scope": "keyword.operator",
-                    "settings": {
-                        "foreground": "#0000FF"
-                    }
                 }
             ]
+        }
+    },
+    "editor.semanticTokenColorCustomizations": {
+        "[Default Light Modern]": {
+            "rules": {
+                "namespace": "#B34700",
+                "operator": "#0000FF"
+            }
         }
     },
     "explorer.autoReveal": false,
