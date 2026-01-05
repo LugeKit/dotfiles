@@ -362,6 +362,16 @@
         {
             "before": [
                 "leader",
+                "t",
+                "a"
+            ],
+            "commands": [
+                "workbench.action.closeOtherEditors"
+            ]
+        },
+        {
+            "before": [
+                "leader",
                 "l"
             ],
             "commands": [
