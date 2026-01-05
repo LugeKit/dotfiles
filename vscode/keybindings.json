@@ -325,7 +325,7 @@
     {
         "key": "cmd+t",
         "command": "workbench.action.icube.aiChatSidebar.createNewSession",
-        "when": "isSoloModeContext && isUserLogined && focusedView == 'workbench.panel.chat.view.ai-chat' || isUserLogined && !AI_CHAT_WORK_STATUS && !IsSoloModeContext && focusedView == 'workbench.panel.chat.view.ai-chat'",
+        "when": "(isSoloModeContext && isUserLogined || isUserLogined && !AI_CHAT_WORK_STATUS && !IsSoloModeContext) && focusedView == 'workbench.panel.chat.view.ai-chat'",
         "isAIItem": false
     },
     {
