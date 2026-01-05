@@ -110,16 +110,6 @@
         "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
     },
     {
-        "key": "f2",
-        "command": "editor.action.marker.nextInFiles",
-        "when": "editorFocus"
-    },
-    {
-        "key": "f8",
-        "command": "-editor.action.marker.nextInFiles",
-        "when": "editorFocus"
-    },
-    {
         "key": "shift+f2",
         "command": "editor.action.marker.prevInFiles",
         "when": "editorFocus"
@@ -504,5 +494,15 @@
     {
         "key": "ctrl+oem_comma",
         "command": "-workbench.action.icube.openSettings"
+    },
+    {
+        "key": "f2",
+        "command": "editor.action.marker.next",
+        "when": "editorFocus"
+    },
+    {
+        "key": "alt+f8",
+        "command": "-editor.action.marker.next",
+        "when": "editorFocus"
     }
 ]
