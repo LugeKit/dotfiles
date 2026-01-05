@@ -479,7 +479,30 @@
     "editor.tokenColorCustomizations": {
         "[Default Light Modern]": {
             "comments": "#6E7681",
-            "strings": "#4CAF50"
+            "strings": "#22863A",
+            "numbers": "#0000FF",
+            "functions": "#0366D6",
+            "variables": "#000000",
+            "textMateRules": [
+                {
+                    "scope": "entity.name.namespace",
+                    "settings": {
+                        "foreground": "#B34700"
+                    }
+                },
+                {
+                    "scope": "support.type.property-name.json",
+                    "settings": {
+                        "foreground": "#0366D6"
+                    }
+                },
+                {
+                    "scope": "keyword.operator",
+                    "settings": {
+                        "foreground": "#0000FF"
+                    }
+                }
+            ]
         }
     },
     "explorer.autoReveal": false,
