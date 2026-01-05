@@ -1,6 +1,6 @@
 ---
 name: git-convention
-description: Enforce git commit message conventions. Use when user asks to commit changes or generate commit messages.
+description: Enforce git commit message conventions. This skill MUST be invoked whenever you perform a git commit or generate commit messages.
 ---
 
 # Git Commit Message Convention
