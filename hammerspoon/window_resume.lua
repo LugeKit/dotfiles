@@ -59,11 +59,12 @@ end
 
 hs.hotkey.bind({ "cmd", "shift" }, "S", saveWindowLayout)
 hs.hotkey.bind({ "cmd", "shift" }, "R", restoreWindowLayout)
-hs.screen.watcher.new(function()
+M.screenWatcher = hs.screen.watcher.new(function()
     hs.timer.doAfter(1, restoreWindowLayout)
 end):start()
-hs.caffeinate.watcher.new(function(eventType)
-    if eventType == hs.caffeinate.watcher.systemDidWake then
+
+M.caffeinateWatcher = hs.caffeinate.watcher.new(function(eventType)
+    if eventType == hs.caffeinate.watcher.screensDidUnlock then
         hs.timer.doAfter(1, restoreWindowLayout)
     end
 end):start()
