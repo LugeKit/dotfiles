@@ -1,6 +1,6 @@
 ---
 name: git-convention
-description: **MANDATORY ** for all git operations. Enforces git commit message conventions. **STRICTLY REQUIRED** when user asks to commit changes or generate commit messages. **DO NOT** manually run git commands, always delegate to this skill. Ensures consistent commit message format, auto-generates conventional commits.
+description: MANDATORY for all git operations. Enforces git commit message conventions. STRICTLY REQUIRED when user asks to commit changes or generate commit messages. DO NOT manually run git commands, always delegate to this skill. Ensures consistent commit message format, auto-generates conventional commits.
 ---
 
 # Git Commit Message Convention

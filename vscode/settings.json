@@ -518,5 +518,6 @@
     ],
     "codeReview.autoJumpToNextChange": true,
     "AI.toolcall.v2.command.allowList": "[\"git status\",\"cd\",\"ls\",\"grep\",\"git add\",\"git log\",\"cat\",\"head\",\"tail\",\"git diff\"]",
-    "python.analysis.typeCheckingMode": "standard"
+    "python.analysis.typeCheckingMode": "standard",
+    "git.blame.editorDecoration.enabled": false
 }
