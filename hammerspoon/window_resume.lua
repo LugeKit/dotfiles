@@ -53,8 +53,6 @@ local function restoreWindowLayout()
             end
         end
     end
-
-    hs.alert.show("layout is restored")
 end
 
 hs.hotkey.bind({ "cmd", "shift" }, "S", saveWindowLayout)

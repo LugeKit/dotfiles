@@ -237,48 +237,8 @@
     },
     {
         "key": "escape",
-        "command": "-editor.action.inlineSuggest.hide",
-        "when": "inInlineEditsPreviewEditor"
-    },
-    {
-        "key": "shift+escape",
-        "command": "editor.action.inlineSuggest.hide",
-        "when": "inInlineEditsPreviewEditor || inlineSuggestionVisible"
-    },
-    {
-        "key": "shift+escape",
-        "command": "-editor.action.inlineSuggest.hide",
-        "when": "inInlineEditsPreviewEditor"
-    },
-    {
-        "key": "escape",
-        "command": "-editor.action.inlineSuggest.hide",
-        "when": "inlineEditIsVisible || inlineSuggestionVisible"
-    },
-    {
-        "key": "shift+escape",
-        "command": "trae.clearRecommendedEdits",
-        "when": "cueInlineSuggestionVisible && trae.hasEditOfCurrentEditor && !editorReadonly || trae.hasEditOfCurrentEditor && !editorReadonly && !inlineSuggestionVisible"
-    },
-    {
-        "key": "escape",
-        "command": "-trae.clearRecommendedEdits",
-        "when": "cueInlineSuggestionVisible && trae.hasEditOfCurrentEditor && !editorReadonly || trae.hasEditOfCurrentEditor && !editorReadonly && !inlineSuggestionVisible"
-    },
-    {
-        "key": "escape",
         "command": "-hideSuggestWidget",
         "when": "suggestWidgetVisible && textInputFocus"
-    },
-    {
-        "key": "shift+escape",
-        "command": "trae.clearRecommendedEdits.IDE",
-        "when": "cueInlineSuggestionVisible && trae.hasEditOfCurrentEditor && !editorReadonly || trae.hasEditOfCurrentEditor && !editorReadonly && !inlineSuggestionVisible"
-    },
-    {
-        "key": "escape",
-        "command": "-trae.clearRecommendedEdits.IDE",
-        "when": "cueInlineSuggestionVisible && trae.hasEditOfCurrentEditor && !editorReadonly || trae.hasEditOfCurrentEditor && !editorReadonly && !inlineSuggestionVisible"
     },
     {
         "key": "f2",
@@ -433,7 +393,7 @@
     {
         "key": "escape",
         "command": "extension.vim_escape",
-        "when": "editorTextFocus && vim.active && !inDebugRepl && !markersNavigationVisible && !dirtyDiffVisible",
+        "when": "editorTextFocus && vim.active && !dirtyDiffVisible && !inDebugRepl && !markersNavigationVisible && !inInlineEditsPreviewEditor && !inlineSuggestionVisible",
         "isAIItem": false
     },
     {
@@ -504,5 +464,45 @@
         "key": "alt+f8",
         "command": "-editor.action.marker.next",
         "when": "editorFocus"
+    },
+    {
+        "key": "escape",
+        "command": "-editor.action.inlineSuggest.hide",
+        "when": "inInlineEditsPreviewEditor"
+    },
+    {
+        "key": "shift+escape",
+        "command": "-editor.action.inlineSuggest.hide",
+        "when": "inInlineEditsPreviewEditor"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "list.focusDown",
+        "when": "listFocus && !inputFocus"
+    },
+    {
+        "key": "j",
+        "command": "-list.focusDown",
+        "when": "listFocus && !inputFocus"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "list.focusUp",
+        "when": "listFocus && !inputFocus"
+    },
+    {
+        "key": "k",
+        "command": "-list.focusUp",
+        "when": "listFocus && !inputFocus"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "selectPrevSuggestion",
+        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "selectNextSuggestion",
+        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
     }
 ]
