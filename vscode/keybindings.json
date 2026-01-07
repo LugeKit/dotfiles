@@ -504,5 +504,10 @@
         "key": "ctrl+j",
         "command": "selectNextSuggestion",
         "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
+    },
+    {
+        "key": "escape",
+        "command": "extension.vim_escape",
+        "when": "editorFocus && vim.active && vim.mode == 'Insert'"
     }
 ]

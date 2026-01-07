@@ -526,5 +526,6 @@
         "reportUnusedExpression": "none",
         "reportUndefinedVariable": "none"
     },
-    "basedpyright.analysis.typeCheckingMode": "standard"
+    "basedpyright.analysis.typeCheckingMode": "standard",
+    "workbench.iconTheme": "material-icon-theme"
 }

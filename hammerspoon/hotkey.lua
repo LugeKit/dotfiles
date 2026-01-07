@@ -11,31 +11,33 @@ hs.hotkey.bind({ "option" }, "z", function()
     hs.application.launchOrFocus("Ghostty")
 end)
 
--- hotkey for dismiss Lark
-local dismissLarkHotkey = hs.hotkey.new({ "cmd" }, "w", function()
-    local app = hs.window.focusedWindow():application()
+-- dismiss lark when cmd+w
+M.cmdWWatcher = hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(event)
+    local keyCode = event:getKeyCode()
+    local flags = event:getFlags()
+
+    -- Fast return if not cmd+w
+    if keyCode ~= hs.keycodes.map["w"] or not flags:containExactly({ "cmd" }) then
+        return false
+    end
+
+    local win = hs.window.focusedWindow()
+    if not win then
+        return false
+    end
+
+    local app = win:application()
     if not app then
-        return
+        return false
+    end
+
+    local appName = app:name()
+    if appName ~= "飞书" and appName ~= "Lark" then
+        return false
     end
 
     app:hide()
-end)
+    return true
+end):start()
 
-local function hotkeyChangeForLark(appName)
-    -- lark will not lose focus when cmd+w close it window
-    -- so force it to hide
-    if appName == "飞书" then
-        dismissLarkHotkey:enable()
-    else
-        dismissLarkHotkey:disable()
-    end
-end
-
-
-------------------- app change listener -------------------
-local appWatcher = hs.application.watcher.new(function(appName, eventType, appObject)
-    if (eventType == hs.application.watcher.activated) then
-        hotkeyChangeForLark(appName)
-    end
-end)
-appWatcher:start()
+return M
