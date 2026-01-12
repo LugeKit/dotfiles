@@ -527,5 +527,7 @@
         "reportUndefinedVariable": "none"
     },
     "basedpyright.analysis.typeCheckingMode": "standard",
-    "workbench.iconTheme": "material-icon-theme"
+    "workbench.iconTheme": "material-icon-theme",
+    "files.autoSave": "onFocusChange",
+    "notebook.formatOnSave.enabled": true
 }
