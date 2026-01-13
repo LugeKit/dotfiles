@@ -462,7 +462,9 @@
     "editor.formatOnSave": true,
     "editor.suggestSelection": "recentlyUsed",
     "editor.suggest.shareSuggestSelections": true,
-    "gopls": {},
+    "gopls": {
+        "ui.semanticTokens": true
+    },
     "go.disableConcurrentTests": true,
     "go.testFlags": [
         "-gcflags=all=-l"
