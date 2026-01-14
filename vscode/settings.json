@@ -531,5 +531,7 @@
     "basedpyright.analysis.typeCheckingMode": "standard",
     "workbench.iconTheme": "material-icon-theme",
     "files.autoSave": "onFocusChange",
+    "jupyter.askForKernelRestart": false,
+    "editor.formatOnSaveMode": "modifications",
     "notebook.formatOnSave.enabled": true
 }
