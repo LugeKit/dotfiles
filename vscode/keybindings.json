@@ -448,7 +448,7 @@
         "when": "editorFocus || editorIsOpen"
     },
     {
-        "key": "win+oem_comma",
+        "key": "win+ctrl+alt+oem_comma",
         "command": "workbench.action.icube.openSettings"
     },
     {

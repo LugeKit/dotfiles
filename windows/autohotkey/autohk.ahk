@@ -84,6 +84,9 @@ A_MenuMaskKey := "vkE8"
 ; win+p -> win ctrl alt p
 #p:: Send "{Blind}^!p"
 
+; win+, -> win ctrl alt ,
+#,:: Send "{Blind}^!,"
+
 ; 禁用原生的 CapsLock 逻辑
 SetCapsLockState "AlwaysOff"
 
