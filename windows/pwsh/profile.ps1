@@ -48,13 +48,11 @@ function Prompt {
 }
 
 function proxy_on {
-  $env:HTTP_PROXY = "127.0.0.1:8889"
-  $env:HTTPS_PROXY = "127.0.0.1:8889"
+  $env:ALL_PROXY = "socks5://127.0.0.1:8889"
 }
 
 function proxy_off {
-  $env:HTTP_PROXY = ""
-  $env:HTTPS_PROXY = ""
+  $env:ALL_PROXY = ""
 }
 
 function which {
