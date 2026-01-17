@@ -529,9 +529,12 @@
         "reportUndefinedVariable": "none"
     },
     "basedpyright.analysis.typeCheckingMode": "standard",
-    "workbench.iconTheme": "material-icon-theme",
     "files.autoSave": "onFocusChange",
     "jupyter.askForKernelRestart": false,
     "editor.formatOnSaveMode": "modifications",
-    "notebook.formatOnSave.enabled": true
+    "notebook.formatOnSave.enabled": true,
+    "workbench.iconTheme": "material-icon-theme",
+    "explorer.confirmDragAndDrop": false,
+    "terminal.integrated.gpuAcceleration": "on",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
