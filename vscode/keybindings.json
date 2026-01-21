@@ -393,7 +393,7 @@
     {
         "key": "escape",
         "command": "extension.vim_escape",
-        "when": "editorTextFocus && vim.active && !dirtyDiffVisible && !inDebugRepl && !markersNavigationVisible && !inInlineEditsPreviewEditor && !inlineSuggestionVisible",
+        "when": "editorTextFocus && vim.active && !dirtyDiffVisible && !inDebugRepl && !inInlineEditsPreviewEditor && !inlineSuggestionVisible && !markersNavigationVisible && !referenceSearchVisible",
         "isAIItem": false
     },
     {

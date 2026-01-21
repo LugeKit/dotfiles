@@ -29,4 +29,6 @@ if exists("&ide")
 	imap <C-i> <Action>(ParameterInfo)
 	imap <C-w> <Action>(EditorDeleteToWordStart)
     imap <C-.> <Action>(InsertInlineCompletionAction)
+    imap <C-j> <Action>(EditorDown)
+    imap <C-k> <Action>(EditorUp)
 endif
