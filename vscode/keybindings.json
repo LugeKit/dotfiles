@@ -559,5 +559,10 @@
         "key": "ctrl+enter",
         "command": "-editor.action.insertLineAfter",
         "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+oem_period",
+        "command": "-editor.action.quickFix",
+        "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
     }
 ]
